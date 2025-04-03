@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #fff;
+      overflow-x: hidden;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 20px;
+      max-width: 900px;
+    }
+
+    /* Particle Background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    h1 {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      letter-spacing: -1px;
+      opacity: 0;
+    }
+
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+      gap: 1.5rem;
+      opacity: 0;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      width: 100px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .countdown-item:hover {
+      transform: translateY(-8px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .countdown-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 5px;
+      background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .countdown-label {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    .blob-1 {
+      background: #8b5cf6;
+      width: 400px;
+      height: 400px;
+      top: -150px;
+      right: -100px;
+    }
+
+    .blob-2 {
+      background: #22d3ee;
+      width: 450px;
+      height: 450px;
+      bottom: -150px;
+      left: -150px;
+    }
+
+    /* Sparkle effect */
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #94a3b8;
+      letter-spacing: 1px;
+      font-weight: 300;
+      opacity: 0;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3.5rem;
+      }
+
+      .countdown-item {
+        height: 85px;
+        width: 85px;
+      }
+
+      .countdown-value {
+        font-size: 2rem;
+      }
+      
+      .tagline {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .countdown {
+        gap: 0.8rem;
+      }
+      
+      .countdown-item {
+        height: 70px;
+        width: 70px;
+      }
+
+      .countdown-value {
+        font-size: 1.6rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+  
+  <!-- Blob effects -->
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <!-- Main Container -->
+  <div class="container">
+    <h1 id="coming-soon-text">Coming Soon</h1>
+    <p class="tagline">We're working on something amazing. Stay tuned for our big reveal.</p>
+    
+    <!-- Countdown Timer -->
+    <div class="countdown">
+      <div class="countdown-item">
+        <div class="countdown-value" id="days">00</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-value" id="hours">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-value" id="minutes">00</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-item">
+        <div class="countdown-value" id="seconds">00</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+
+  <script>
+    // Particles.js Configuration
+    document.addEventListener('DOMContentLoaded', function() {
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 80,
+            density: {
+              enable: true,
+              value_area: 800
+            }
+          },
+          color: {
+            value: ["#22d3ee", "#8b5cf6", "#c084fc", "#38bdf8"]
+          },
+          shape: {
+            type: "circle",
+          },
+          opacity: {
+            value: 0.5,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false
+            }
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 2,
+              size_min: 0.1,
+              sync: false
+            }
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#a5b4fc",
+            opacity: 0.2,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 1,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200
+            }
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "bubble"
+            },
+            onclick: {
+              enable: true,
+              mode: "push"
+            },
+            resize: true
+          },
+          modes: {
+            bubble: {
+              distance: 200,
+              size: 6,
+              duration: 2,
+              opacity: 0.8,
+              speed: 3
+            },
+            push: {
+              particles_nb: 4
+            }
+          }
+        },
+        retina_detect: true
+      });
+    });
+
+    // GSAP Animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Animate title
+      gsap.to("#coming-soon-text", {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        from: { y: 30 }
+      });
+      
+      // Animate tagline
+      gsap.to(".tagline", {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        delay: 0.2,
+        from: { y: 20 }
+      });
+      
+      // Animate countdown
+      gsap.to(".countdown", {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        delay: 0.4,
+        from: { y: 30 }
+      });
+      
+      // Animate blob elements
+      gsap.to(".blob-1", {
+        x: "10%",
+        y: "10%",
+        duration: 18,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+      
+      gsap.to(".blob-2", {
+        x: "-10%",
+        y: "-10%",
+        duration: 15,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 0.5
+      });
+      
+      // Create floating animation for countdown items
+      gsap.to(".countdown-item", {
+        y: -10,
+        duration: 2,
+        stagger: 0.2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    });
+
+    // Countdown Timer to April 7, 2025
+    const countdownDate = new Date("April 7, 2025 00:00:00").getTime();
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      
+      // Time calculations
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+      // Display results
+      document.getElementById("days").textContent = days.toString().padStart(2, '0');
+      document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+      
+      // If countdown is over
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+      }
+    }
+    
+    // Update countdown every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initialize
+
+    // Sparkle effect following the mouse
+    function createSparkle(e) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      
+      // Random sparkle appearance
+      const size = Math.random() * 8 + 2;
+      const colors = ['#22d3ee', '#8b5cf6', '#c084fc', '#38bdf8'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      
+      sparkle.style.width = `${size}px`;
+      sparkle.style.height = `${size}px`;
+      sparkle.style.background = color;
+      sparkle.style.borderRadius = '50%';
+      sparkle.style.position = 'absolute';
+      sparkle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
+      
+      // Position at mouse location
+      sparkle.style.left = `${e.clientX}px`;
+      sparkle.style.top = `${e.clientY}px`;
+      
+      document.body.appendChild(sparkle);
+      
+      // Animate and remove with GSAP
+      gsap.to(sparkle, {
+        duration: Math.random() * 1 + 0.5,
+        x: Math.random() * 50 - 25,
+        y: Math.random() * 50 - 25,
+        opacity: 0,
+        scale: 0,
+        ease: "power1.out",
+        onComplete: () => {
+          sparkle.remove();
+        }
+      });
+    }
+    
+    // Create sparkles on mouse move with throttling
+    let lastSparkleTime = 0;
+    document.addEventListener('mousemove', (e) => {
+      const now = Date.now();
+      if (now - lastSparkleTime > 50) { // Limit to 20 sparkles per second
+        createSparkle(e);
+        lastSparkleTime = now;
+      }
+    });
+  </script>
+</body>
+</html>
