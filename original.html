@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumière Vivante | Brillez dans la simplicité</title>
+  <meta name="description" content="Lumière Vivante - Atmosphère lumineuse, luxe raffiné et confort unique">
+  <meta name="author" content="Lumière Vivante">
+  <meta property="og:title" content="Lumière Vivante | Brillez dans la simplicité">
+  <meta property="og:description" content="Atmosphère lumineuse, luxe raffiné et confort unique">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@lumierevivante">
+  <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@3.1.2/dist/fullpage.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/fullpage.js@3.1.2/dist/fullpage.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    :root{--black:#000;--dark-black:#0A0A0A;--dark-gray:#121212;--medium-gray:#333;--light-gray:#888;--white:#fff;--gold:#D4AF37;--gold-light:#F8E9A1;--gold-hover:#B8941F;--font-serif:'Playfair Display',serif;--font-sans:'Montserrat',sans-serif;--transition-slow:0.7s cubic-bezier(0.76,0,0.24,1);--transition-medium:0.5s cubic-bezier(0.215,0.61,0.355,1);--transition-fast:0.3s cubic-bezier(0.215,0.61,0.355,1)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{overflow:hidden;background:var(--black);color:var(--white);font-family:var(--font-sans);line-height:1.6;height:100%;width:100%;position:relative}
+    body.loading{overflow:hidden}
+    h1,h2,h3,h4,h5{font-family:var(--font-serif);line-height:1.2;margin-bottom:1rem}
+    h1{font-size:clamp(3rem,8vw,6rem);font-weight:500}
+    h2{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:500}
+    h3{font-size:clamp(1.8rem,5vw,3rem);font-weight:500}
+    p{margin-bottom:1.5rem;font-size:clamp(1rem,1.5vw,1.25rem);line-height:1.7;max-width:65ch}
+    .container{width:100%;max-width:1440px;padding:0 clamp(1.5rem,5vw,6rem);margin:0 auto;display:flex;flex-direction:column;justify-content:center;z-index:5;position:relative}
+    .text-gold{color:var(--gold)}
+    .italic{font-style:italic}
+    .uppercase{text-transform:uppercase}
+    .text-center{text-align:center}
+    .relative{position:relative}
+    .section{width:100vw;height:100vh;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+    .section-bg{position:absolute;inset:0;width:100%;height:100%;z-index:1;overflow:hidden}
+    .bg-video{width:100%;height:100%;object-fit:cover}
+    .section-overlay{position:absolute;inset:0;width:100%;height:100%;background:linear-gradient(to bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.8));z-index:2}
+    .cursor{position:fixed;width:40px;height:40px;border:1px solid rgba(255,255,255,0.5);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);mix-blend-mode:difference;z-index:9999;transition:transform 0.2s,width 0.3s,height 0.3s,border-color 0.3s;opacity:0}
+    .cursor-dot{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);z-index:10000;opacity:0;transition:transform 0.1s}
+    @media(hover:hover){.cursor,.cursor-dot{opacity:1}}
+    .cursor.active{width:60px;height:60px;border-color:var(--gold)}
+    .grain{position:fixed;top:0;left:0;width:100%;height:100%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");pointer-events:none;z-index:100;opacity:0.03;mix-blend-mode:overlay}
+    .loader{position:fixed;inset:0;background:var(--black);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10000;transition:opacity 0.5s ease,visibility 0.5s ease}
+    .loader.hidden{opacity:0;visibility:hidden}
+    .loader-content{display:flex;align-items:center;gap:1rem;margin-bottom:2rem}
+    .loader-logo{font-family:var(--font-serif);font-size:2.5rem;color:var(--white);letter-spacing:1px}
+    .loader-dots{display:flex;gap:8px}
+    .loader-dot{width:8px;height:8px;background:var(--gold);border-radius:50%}
+    .loader-progress{width:200px;height:1px;background:rgba(255,255,255,0.1);position:relative;overflow:hidden}
+    .loader-bar{position:absolute;left:0;top:0;height:100%;width:0;background:var(--gold);transition:width 1.5s cubic-bezier(0.77,0,0.175,1)}
+    .header{position:fixed;top:0;left:0;width:100%;padding:2rem;z-index:90;transition:all 0.4s ease;mix-blend-mode:difference}
+    .header-container{display:flex;justify-content:space-between;align-items:center;max-width:1440px;margin:0 auto}
+    .logo{font-family:var(--font-serif);font-size:1.5rem;font-weight:400;color:var(--white);text-decoration:none;position:relative;z-index:91;letter-spacing:1px;transition:opacity 0.3s ease}
+    .logo:hover{opacity:0.8}
+    .menu-toggle{width:40px;height:40px;position:relative;cursor:pointer;z-index:91;display:flex;align-items:center;justify-content:center}
+    .hamburger{width:30px;height:2px;background:var(--white);position:relative;transition:all 0.3s ease}
+    .hamburger::before,.hamburger::after{content:'';position:absolute;width:30px;height:2px;background:var(--white);transition:all 0.3s ease}
+    .hamburger::before{transform:translateY(-8px)}
+    .hamburger::after{transform:translateY(8px)}
+    body.menu-open .hamburger{background:transparent}
+    body.menu-open .hamburger::before{transform:rotate(45deg)}
+    body.menu-open .hamburger::after{transform:rotate(-45deg)}
+    .nav-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.95);z-index:89;display:flex;justify-content:center;align-items:center;opacity:0;visibility:hidden;transition:opacity 0.5s ease,visibility 0.5s ease}
+    body.menu-open .nav-overlay{opacity:1;visibility:visible}
+    .nav-links{display:flex;flex-direction:column;gap:2rem;list-style:none;text-align:center}
+    .nav-links li{transform:translateY(30px);opacity:0;transition:transform 0.5s ease,opacity 0.5s ease}
+    body.menu-open .nav-links li{opacity:1;transform:translateY(0)}
+    body.menu-open .nav-links li:nth-child(1){transition-delay:0.1s}
+    body.menu-open .nav-links li:nth-child(2){transition-delay:0.2s}
+    body.menu-open .nav-links li:nth-child(3){transition-delay:0.3s}
+    body.menu-open .nav-links li:nth-child(4){transition-delay:0.4s}
+    .nav-link{position:relative;color:var(--white);text-decoration:none;font-size:1.5rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;transition:color 0.3s ease;padding:0.5rem 1rem;display:inline-block}
+    .nav-link:hover{color:var(--gold)}
+    .nav-link::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform 0.3s ease}
+    .nav-link:hover::after{transform:scaleX(1);transform-origin:left}
+    .scroll-indicator{position:fixed;right:30px;top:50%;transform:translateY(-50%);z-index:50}
+    .scroll-dots{display:flex;flex-direction:column;gap:1.5rem;align-items:center}
+    .scroll-dot{width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,0.3);cursor:pointer;transition:all 0.3s ease;position:relative}
+    .scroll-dot.active{background:var(--gold);border-color:var(--gold);transform:scale(1.2)}
+    .scroll-dot-label{position:absolute;right:25px;white-space:nowrap;font-size:0.8rem;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--white);opacity:0;transform:translateX(-10px);transition:all 0.3s ease;pointer-events:none}
+    .scroll-dot:hover + .scroll-dot-label{opacity:1;transform:translateX(0)}
+    .progress-container{position:fixed;top:0;left:0;width:100%;height:3px;background:rgba(255,255,255,0.1);z-index:95}
+    .progress-bar{height:100%;background:var(--gold);width:0;transition:width 0.1s ease}
+    .hero-content{text-align:center;position:relative;z-index:5;max-width:900px}
+    .hero-title{margin-bottom:1.5rem;position:relative;display:inline-block}
+    .hero-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:100px;height:3px;background:var(--gold)}
+    .hero-subtitle{color:var(--gold-light);font-size:clamp(1.2rem,3vw,1.8rem);margin-bottom:2rem;font-style:italic}
+    .btn{display:inline-block;padding:1.2rem 2.8rem;background:var(--gold);color:var(--black);font-family:var(--font-sans);font-weight:500;font-size:1rem;text-transform:uppercase;letter-spacing:2px;text-decoration:none;border:none;cursor:pointer;position:relative;overflow:hidden;transition:all 0.4s cubic-bezier(0.215,0.61,0.355,1);box-shadow:0 5px 20px rgba(212,175,55,0.3)}
+    .btn:hover{background:var(--gold-hover);transform:translateY(-3px);box-shadow:0 8px 25px rgba(212,175,55,0.4)}
+    .btn::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:rgba(255,255,255,0.2);transition:all 0.6s ease}
+    .btn:hover::after{left:100%}
+    .product-carousel{width:100%;max-width:1200px;margin:0 auto;position:relative;overflow:visible}
+    .swiper-slide{opacity:0.4;transform:scale(0.85);transition:opacity 0.5s ease,transform 0.5s ease}
+    .swiper-slide-active{opacity:1;transform:scale(1)}
+    .product-card{background:rgba(25,25,25,0.7);border:1px solid rgba(255,255,255,0.05);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 5px 30px rgba(0,0,0,0.3);transition:all 0.5s cubic-bezier(0.165,0.84,0.44,1)}
+    .product-card:hover{transform:translateY(-15px);box-shadow:0 20px 40px rgba(0,0,0,0.5);border-color:var(--gold)}
+    .product-image-container{position:relative;width:100%;height:200px;overflow:hidden}
+    .product-image{width:100%;height:100%;object-fit:cover;transition:transform 0.7s ease}
+    .product-card:hover .product-image{transform:scale(1.1)}
+    .product-tag{position:absolute;top:15px;left:15px;background:rgba(0,0,0,0.7);color:var(--white);padding:0.3rem 0.8rem;border-radius:30px;font-size:0.7rem;text-transform:uppercase;letter-spacing:1px;z-index:2}
+    .product-info{padding:1.5rem;display:flex;flex-direction:column;flex-grow:1}
+    .product-title{font-size:1.4rem;margin-bottom:0.5rem;color:var(--white)}
+    .product-subtitle{color:var(--gold);font-style:italic;margin-bottom:1rem;font-size:0.9rem}
+    .product-description{margin-bottom:1.5rem;flex-grow:1;opacity:0.8;font-size:0.9rem}
+    .product-price{font-size:1.2rem;font-weight:600;color:var(--gold-light);margin-bottom:1.5rem}
+    .product-action{display:flex;justify-content:space-between;align-items:center}
+    .product-link{color:var(--white);text-decoration:none;position:relative;display:inline-block;font-size:0.9rem;text-transform:uppercase;letter-spacing:1px;padding-bottom:5px;transition:color 0.3s ease}
+    .product-link:hover{color:var(--gold)}
+    .product-link::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform 0.3s ease}
+    .product-link:hover::after{transform:scaleX(1);transform-origin:left}
+    .product-icon{width:40px;height:40px;border-radius:50%;background:rgba(212,175,55,0.1);display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;cursor:pointer}
+    .product-icon svg{width:20px;height:20px;stroke:var(--gold);transition:all 0.3s ease}
+    .product-icon:hover{background:var(--gold)}
+    .product-icon:hover svg{stroke:var(--black)}
+    .swiper-button-prev,.swiper-button-next{width:50px;height:50px;border-radius:50%;background:rgba(25,25,25,0.8);border:1px solid rgba(255,255,255,0.1);color:var(--white);display:flex;align-items:center;justify-content:center;transition:all 0.3s ease}
+    .swiper-button-prev:hover,.swiper-button-next:hover{background:var(--gold);color:var(--black)}
+    .swiper-button-prev::after,.swiper-button-next::after{font-size:1.2rem;font-weight:bold}
+    .comparison-container{max-width:900px;width:100%}
+    .comparison-item{border-left:4px solid var(--gold);padding-left:1.5rem;margin-bottom:2.5rem;position:relative;transition:all 0.5s ease;transform:translateX(0)}
+    .comparison-item:hover{transform:translateX(10px)}
+    .comparison-text{font-size:1.2rem;line-height:1.8}
+    .highlight{color:var(--gold);font-weight:500}
+    .comparison-label{display:inline-block;font-weight:bold;margin-right:0.5rem;padding:0.2rem 0.4rem;background:var(--gold);color:var(--black);border-radius:3px}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+    .promo-container{max-width:900px;width:100%;position:relative}
+    .promo-badge{width:150px;height:150px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--black);font-weight:700;font-size:2rem;position:absolute;top:-50px;right:-50px;transform:rotate(15deg);box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:10;text-align:center;padding:1rem;animation:pulse 2s infinite}
+    .promo-discount{font-size:2.5rem;display:block}
+    .promo-text{font-size:1rem;display:block}
+    .promo-box{background:linear-gradient(to bottom right,rgba(30,30,30,0.9),rgba(10,10,10,0.9));border:1px solid rgba(212,175,55,0.3);border-radius:10px;padding:3rem;position:relative;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.4);transition:transform 0.3s ease}
+    .promo-box:hover{transform:scale(1.02)}
+    .promo-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(212,175,55,0.1) 0%,transparent 70%);pointer-events:none}
+    .footer{background:var(--dark-gray);padding:5rem 2rem;text-align:center;width:100%;height:100%}
+    .footer-logo{font-family:var(--font-serif);font-size:2rem;color:var(--white);margin-bottom:2rem;display:inline-block;position:relative}
+    .footer-logo::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:40px;height:2px;background:var(--gold)}
+    .footer-text{max-width:500px;margin:0 auto 2.5rem;opacity:0.7}
+    .footer-links{display:flex;justify-content:center;gap:2.5rem;margin-bottom:2.5rem;flex-wrap:wrap}
+    .social-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:2.5rem}
+    .social-link{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;color:var(--white);text-decoration:none;transition:all 0.3s ease;font-size:0.8rem}
+    .social-link:hover{background:var(--gold);color:var(--black);border-color:var(--gold);transform:translateY(-3px)}
+    .copyright{opacity:0.5;font-size:0.9rem}
+    .fade-in{opacity:0;transform:translateY(30px);transition:opacity 1s ease,transform 1s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+    .slide-in-right{transform:translateX(50px);opacity:0;transition:transform 1s ease,opacity 1s ease}
+    .slide-in-right.visible{transform:translateX(0);opacity:1}
+    .slide-in-left{transform:translateX(-50px);opacity:0;transition:transform 1s ease,opacity 1s ease}
+    .slide-in-left.visible{transform:translateX(0);opacity:1}
+    .scale-in{transform:scale(0.9);opacity:0;transition:transform 1s ease,opacity 1s ease}
+    .scale-in.visible{transform:scale(1);opacity:1}
+    .delay-1{transition-delay:0.1s}
+    .delay-2{transition-delay:0.2s}
+    .delay-3{transition-delay:0.3s}
+    .delay-4{transition-delay:0.4s}
+    .delay-5{transition-delay:0.5s}
+    .fp-watermark{display:none!important}
+    .fp-slidesNav{display:none!important}
+    @media(max-width:1024px){.scroll-indicator{display:none}.promo-badge{width:120px;height:120px;font-size:1.5rem;top:-30px;right:-30px}.promo-box{padding:2.5rem}}
+    @media(max-width:768px){.nav-link{font-size:1.2rem}.nav-links{gap:1.5rem}.comparison-text{font-size:1rem}.footer-links{gap:1.5rem}.promo-badge{width:100px;height:100px;font-size:1.2rem;transform:rotate(10deg)}}
+    @media(max-width:576px){h1{font-size:clamp(2.5rem,10vw,3rem)}h2{font-size:clamp(2rem,8vw,2.5rem)}.btn{padding:1rem 2rem;font-size:0.9rem}.promo-badge{position:relative;top:-50px;right:0;margin:0 auto;transform:rotate(0deg);width:90px;height:90px;font-size:1.1rem}.promo-box{padding:1.5rem;margin-top:3rem}}
+  </style>
+</head>
+<body class="loading">
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <span class="loader-logo">Lumière Vivante</span>
+      <div class="loader-dots">
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+      </div>
+    </div>
+    <div class="loader-progress">
+      <div class="loader-bar" id="loader-bar"></div>
+    </div>
+  </div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="grain"></div>
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <header class="header" id="header">
+    <div class="header-container">
+      <a href="#accueil" class="logo">Lumière Vivante</a>
+      <div class="menu-toggle" id="menu-toggle">
+        <div class="hamburger"></div>
+      </div>
+    </div>
+  </header>
+  <div class="nav-overlay" id="nav-overlay">
+    <ul class="nav-links">
+      <li><a href="#accueil" class="nav-link" data-menuanchor="accueil">Accueil</a></li>
+      <li><a href="#produits" class="nav-link" data-menuanchor="produits">Produits</a></li>
+      <li><a href="#comparaisons" class="nav-link" data-menuanchor="comparaisons">Comparaisons</a></li>
+      <li><a href="#promotion" class="nav-link" data-menuanchor="promotion">Promotion</a></li>
+      <li><a href="#contact" class="nav-link" data-menuanchor="contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="scroll-indicator" id="scroll-indicator">
+    <div class="scroll-dots">
+      <div class="scroll-dot active" data-anchor="accueil"></div>
+      <div class="scroll-dot-label">Accueil</div>
+      <div class="scroll-dot" data-anchor="produits"></div>
+      <div class="scroll-dot-label">Produits</div>
+      <div class="scroll-dot" data-anchor="comparaisons"></div>
+      <div class="scroll-dot-label">Comparaisons</div>
+      <div class="scroll-dot" data-anchor="promotion"></div>
+      <div class="scroll-dot-label">Promotion</div>
+      <div class="scroll-dot" data-anchor="contact"></div>
+      <div class="scroll-dot-label">Contact</div>
+    </div>
+  </div>
+  <div id="fullpage">
+    <section class="section" data-anchor="accueil">
+      <div class="section-bg">
+        <video autoplay loop muted playsinline class="bg-video">
+          <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="section-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title fade-in">Lumière Vivante</h1>
+          <p class="hero-subtitle fade-in delay-1">Brillez dans la simplicité.</p>
+          <p class="fade-in delay-2 text-center">Notre magasin offre une atmosphère lumineuse, un luxe raffiné et un confort unique.</p>
+          <a href="#produits" class="btn fade-in delay-3">Découvrir la Collection</a>
+        </div>
+      </div>
+    </section>
+    <section class="section" data-anchor="produits">
+      <div class="section-bg" style="background: linear-gradient(to top, #000, #121212);"></div>
+      <div class="container">
+        <h2 class="text-center mb-16 fade-in">Nos Produits <span class="text-gold">Exceptionnels</span></h2>
+        <div class="product-carousel fade-in delay-1">
+          <div class="swiper" id="product-swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="product-card">
+                  <div class="product-image-container">
+                    <span class="product-tag">Elegance raffinee</span>
+                    <img src="https://images.unsplash.com/photo-1543053976-7e93d6a21e9c?q=80&w=1528&auto=format&fit=crop" alt="Chemise Barocco en soie" class="product-image">
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-title">Chemise en soie Camee</h3>
+                    <p class="product-subtitle">Elegante, douce, brillante</p>
+                    <p class="product-description">Cette chemise en soie offre une élégance raffinée avec son imprimé unique et sa texture luxueuse.</p>
+                    <p class="product-price">CA$2,250</p>
+                    <div class="product-action">
+                      <a href="#" class="product-link">En savoir plus</a>
+                      <div class="product-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card">
+                  <div class="product-image-container">
+                    <span class="product-tag">Chic moderne</span>
+                    <img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956?q=80&w=1374&auto=format&fit=crop" alt="Leggings Camee" class="product-image">
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-title">Leggings Camee</h3>
+                    <p class="product-subtitle">Moulants, confortables, stylés</p>
+                    <p class="product-description">Ces leggings offrent un confort optimal tout en maintenant une allure élégante.</p>
+                    <p class="product-price">CA$1,225</p>
+                    <div class="product-action">
+                      <a href="#" class="product-link">En savoir plus</a>
+                      <div class="product-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card">
+                  <div class="product-image-container">
+                    <span class="product-tag">Design elegant</span>
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1480&auto=format&fit=crop" alt="Escarpins vernis à noeud Opera 85mm" class="product-image">
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-title">Escarpins vernis à noeud Opera</h3>
+                    <p class="product-subtitle">Chics, vernis, raffinés</p>
+                    <p class="product-description">Ces escarpins ajoutent une touche d'élégance à toute tenue de soirée ou de bureau.</p>
+                    <p class="product-price">CA$1,325</p>
+                    <div class="product-action">
+                      <a href="#" class="product-link">En savoir plus</a>
+                      <div class="product-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card">
+                  <div class="product-image-container">
+                    <span class="product-tag">Look sportif</span>
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1335&auto=format&fit=crop" alt="Sac hobo Greca Goddess" class="product-image">
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-title">Sac hobo Greca Goddess</h3>
+                    <p class="product-subtitle">Luxueux, pratique, doré</p>
+                    <p class="product-description">Ce sac allie fonctionnalité et style avec son design élégant et ses finitions dorées.</p>
+                    <p class="product-price">CA$2,050</p>
+                    <div class="product-action">
+                      <a href="#" class="product-link">En savoir plus</a>
+                      <div class="product-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="product-card">
+                  <div class="product-image-container">
+                    <span class="product-tag">Style urbain</span>
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1480&auto=format&fit=crop" alt="Lunettes de soleil" class="product-image">
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-title">Lunettes de soleil oeil-de-chat</h3>
+                    <p class="product-subtitle">Modernes, audacieuses, sophistiquées</p>
+                    <p class="product-description">Ces lunettes de soleil offrent protection et style avec leur design avant-gardiste.</p>
+                    <p class="product-price">CA$562</p>
+                    <div class="product-action">
+                      <a href="#" class="product-link">En savoir plus</a>
+                      <div class="product-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M5 12h14"></path>
+                          <path d="m12 5 7 7-7 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        </div>
+        <p class="text-center text-gold italic mt-10 fade-in delay-4">Notre collection exclusive incarne l'élégance et le raffinement.</p>
+      </div>
+    </section>
+    <section class="section" data-anchor="comparaisons">
+      <div class="section-bg" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1579547945413-497e1b99dac0?q=80&w=2039') no-repeat center/cover;"></div>
+      <div class="section-overlay"></div>
+      <div class="container">
+        <div class="comparison-container">
+          <h2 class="text-center mb-16 fade-in">Notre <span class="text-gold">Distinction</span></h2>
+          <div class="comparison-item fade-in delay-1">
+            <p class="comparison-text"><span class="comparison-label">C</span>Le sac Barocco est plus cher que notre sac <span class="highlight">Lumière Vivante</span> parce qu'il est fait avec des matériaux spéciaux, mais notre qualité reste inégalée.</p>
+          </div>
+          <div class="comparison-item fade-in delay-2">
+            <p class="comparison-text"><span class="comparison-label">C</span><span class="highlight">Lumière Vivante</span> est plus élégante que les autres boutiques parce que nos produits sont uniques et inspirés des plus belles créations parisiennes.</p>
+          </div>
+          <div class="comparison-item fade-in delay-3">
+            <p class="comparison-text"><span class="comparison-label">S</span><span class="highlight">Lumière Vivante</span> est la boutique la plus sophistiquée de la ville parce que nous avons les meilleurs produits issus d'un savoir-faire artisanal d'exception.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" data-anchor="promotion">
+      <div class="section-bg">
+        <video autoplay loop muted playsinline class="bg-video">
+          <source src="https://www.w3schools.com/howto/movie.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="container">
+        <div class="promo-container">
+          <div class="promo-box fade-in">
+            <div class="promo-badge fade-in delay-1">
+              <span class="promo-discount">-20%</span>
+              <span class="promo-text">Offre limitée</span>
+            </div>
+            <h2 class="text-center mb-8 fade-in delay-2">Offre Spéciale de Pâques</h2>
+            <p class="text-center text-gold text-xl mb-8 fade-in delay-3">-20% sur tous les produits chez Lumière Vivante!</p>
+            <p class="text-center mb-10 fade-in delay-4">Profitez de cette vente exclusive pour découvrir notre collection unique de pièces d'exception.</p>
+            <div class="text-center fade-in delay-5">
+              <a href="#produits" class="btn">Découvrir la Collection</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section fp-auto-height" data-anchor="contact">
+      <div class="section-bg" style="background: var(--dark-gray);"></div>
+      <div class="footer">
+        <div class="container">
+          <span class="footer-logo fade-in">Lumière Vivante</span>
+          <p class="footer-text fade-in delay-1">Notre magasin offre une atmosphère lumineuse, un luxe raffiné et un confort unique que vous ne trouverez nulle part ailleurs.</p>
+          <div class="footer-links fade-in delay-2">
+            <a href="#accueil" class="nav-link">Accueil</a>
+            <a href="#produits" class="nav-link">Produits</a>
+            <a href="#comparaisons" class="nav-link">Comparaisons</a>
+            <a href="#promotion" class="nav-link">Promotion</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </div>
+          <div class="social-links fade-in delay-3">
+            <a href="#" class="social-link">FB</a>
+            <a href="#" class="social-link">IG</a>
+            <a href="#" class="social-link">TW</a>
+            <a href="#" class="social-link">PT</a>
+          </div>
+          <p class="copyright fade-in delay-4">&copy; 2025 Lumière Vivante. Tous droits réservés.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loader = document.getElementById('loader');
+      const loaderBar = document.getElementById('loader-bar');
+      const menuToggle = document.getElementById('menu-toggle');
+      const progressBar = document.getElementById('progress-bar');
+      const cursor = document.getElementById('cursor');
+      const cursorDot = document.getElementById('cursor-dot');
+      const scrollDots = document.querySelectorAll('.scroll-dot');
+      let fullpageInstance;
+      function initLoader() {
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += Math.random() * 10;
+          if (progress > 100) progress = 100;
+          loaderBar.style.width = progress + '%';
+          if (progress === 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+              loader.classList.add('hidden');
+              document.body.classList.remove('loading');
+              initAnimations();
+            }, 500);
+          }
+        }, 200);
+      }
+      function initCursor() {
+        if (window.matchMedia('(hover: hover)').matches) {
+          document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+            cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+          });
+          const interactiveElements = document.querySelectorAll('a, button, .product-card, .scroll-dot, .menu-toggle');
+          interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => { cursor.classList.add('active'); });
+            el.addEventListener('mouseleave', () => { cursor.classList.remove('active'); });
+          });
+        }
+      }
+      function initSwiper() {
+        new Swiper('#product-swiper', {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          centeredSlides: true,
+          loop: true,
+          grabCursor: true,
+          effect: 'coverflow',
+          coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 1, slideShadows: false },
+          pagination: { el: '.swiper-pagination', clickable: true },
+          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+          breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+        });
+      }
+      function initFullpage() {
+        fullpageInstance = new fullpage('#fullpage', {
+          anchors: ['accueil', 'produits', 'comparaisons', 'promotion', 'contact'],
+          menu: '#scroll-indicator',
+          navigation: false,
+          scrollingSpeed: 1000,
+          easing: 'easeInOutCubic',
+          verticalCentered: true,
+          responsiveWidth: 0,
+          afterLoad: function(origin, destination) {
+            const progress = (destination.index / (document.querySelectorAll('.section').length - 1)) * 100;
+            progressBar.style.width = `${progress}%`;
+            updateSectionStatus(destination.index);
+            scrollDots.forEach((dot, index) => {
+              dot.classList.toggle('active', index === destination.index);
+            });
+          },
+          onLeave: function(origin, destination) {
+            const fadeInElements = document.querySelectorAll(`.section[data-anchor="${destination.anchor}"] .fade-in`);
+            fadeInElements.forEach(el => el.classList.add('visible'));
+            const originElements = document.querySelectorAll(`.section[data-anchor="${origin.anchor}"] .fade-in`);
+            originElements.forEach(el => el.classList.remove('visible'));
+          }
+        });
+      }
+      function initEventListeners() {
+        menuToggle.addEventListener('click', () => { document.body.classList.toggle('menu-open'); });
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', () => { document.body.classList.remove('menu-open'); });
+        });
+        scrollDots.forEach((dot, index) => {
+          dot.addEventListener('click', () => { fullpageInstance.moveTo(index + 1); });
+        });
+        window.addEventListener('resize', () => { if (fullpageInstance) { fullpageInstance.reBuild(); } });
+      }
+      function updateSectionStatus(activeIndex) {
+        document.querySelectorAll('.section').forEach((section, index) => {
+          const animations = section.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+          animations.forEach(el => el.classList.toggle('visible', index === activeIndex));
+        });
+      }
+      function initAnimations() {
+        updateSectionStatus(0);
+        gsap.registerPlugin(ScrollTrigger);
+        document.querySelectorAll('.product-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            gsap.to(card, { y: -15, duration: 0.4, ease: 'power2.out', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' });
+            gsap.to(card.querySelector('.product-image'), { scale: 1.1, duration: 0.7, ease: 'power2.out' });
+          });
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, { y: 0, duration: 0.4, ease: 'power2.out', boxShadow: '0 5px 30px rgba(0,0,0,0.3)' });
+            gsap.to(card.querySelector('.product-image'), { scale: 1, duration: 0.7, ease: 'power2.out' });
+          });
+        });
+      }
+      function init() {
+        initLoader();
+        initCursor();
+        initFullpage();
+        initSwiper();
+        initEventListeners();
+      }
+      init();
+    });
+  </script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92c4d6302b18abc4","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.3.0","token":"dc79be98a7d9454985898a9490bd0402"}' crossorigin="anonymous"></script>
+</body>
+</html>
