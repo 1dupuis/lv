@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Lumière Vivante | Brillez dans la simplicité</title>
   <meta name="description" content="Lumière Vivante - Atmosphère lumineuse, luxe raffiné et confort unique">
   <meta name="author" content="Lumière Vivante">
@@ -124,17 +124,17 @@
     .swiper-button-prev:hover,.swiper-button-next:hover{background:var(--gold);color:var(--black)}
     .swiper-button-prev::after,.swiper-button-next::after{font-size:1.2rem;font-weight:bold}
     .comparison-container{max-width:900px;width:100%}
-    .comparison-item{border-left:4px solid var(--gold);padding-left:1.5rem;margin-bottom:2.5rem;position:relative;transition:all 0.5s ease;transform:translateX(0)}
-    .comparison-item:hover{transform:translateX(10px)}
+    .comparison-item{border-left:4px solid var(--gold);padding:1.5rem;margin-bottom:2.5rem;position:relative;transition:all 0.5s ease;transform:translateX(0);border-radius:8px;background:rgba(212,175,55,0.1);}
+    .comparison-item:hover{transform:translateX(10px);background:rgba(212,175,55,0.15);}
     .comparison-text{font-size:1.2rem;line-height:1.8}
     .highlight{color:var(--gold);font-weight:500}
     .comparison-label{display:inline-block;font-weight:bold;margin-right:0.5rem;padding:0.2rem 0.4rem;background:var(--gold);color:var(--black);border-radius:3px}
     @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
     .promo-container{max-width:900px;width:100%;position:relative}
-    .promo-badge{width:150px;height:150px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--black);font-weight:700;font-size:2rem;position:absolute;top:-50px;right:-50px;transform:rotate(15deg);box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:10;text-align:center;padding:1rem;animation:pulse 2s infinite}
+    .promo-badge{width:150px;height:150px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--black);font-weight:700;font-size:2rem;position:absolute;top:-75px;right:-75px;transform:rotate(15deg);box-shadow:0 10px 30px rgba(0,0,0,0.3);z-index:10;text-align:center;padding:1rem;animation:pulse 2s infinite}
     .promo-discount{font-size:2.5rem;display:block}
     .promo-text{font-size:1rem;display:block}
-    .promo-box{background:linear-gradient(to bottom right,rgba(30,30,30,0.9),rgba(10,10,10,0.9));border:1px solid rgba(212,175,55,0.3);border-radius:10px;padding:3rem;position:relative;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.4);transition:transform 0.3s ease}
+    .promo-box{background:linear-gradient(to bottom right,rgba(30,30,30,0.9),rgba(10,10,10,0.9));border:1px solid rgba(212,175,55,0.3);border-radius:10px;padding:4rem 3rem 3rem;position:relative;overflow:visible;box-shadow:0 20px 40px rgba(0,0,0,0.4);transition:transform 0.3s ease}
     .promo-box:hover{transform:scale(1.02)}
     .promo-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(212,175,55,0.1) 0%,transparent 70%);pointer-events:none}
     .footer{background:var(--dark-gray);padding:5rem 2rem;text-align:center;width:100%;height:100%}
@@ -161,9 +161,9 @@
     .delay-5{transition-delay:0.5s}
     .fp-watermark{display:none!important}
     .fp-slidesNav{display:none!important}
-    @media(max-width:1024px){.scroll-indicator{display:none}.promo-badge{width:120px;height:120px;font-size:1.5rem;top:-30px;right:-30px}.promo-box{padding:2.5rem}}
+    @media(max-width:1024px){.scroll-indicator{display:none}.promo-badge{width:120px;height:120px;font-size:1.5rem;top:-60px;right:-60px}.promo-box{padding:3rem 2rem 2rem}}
     @media(max-width:768px){.nav-link{font-size:1.2rem}.nav-links{gap:1.5rem}.comparison-text{font-size:1rem}.footer-links{gap:1.5rem}.promo-badge{width:100px;height:100px;font-size:1.2rem;transform:rotate(10deg)}}
-    @media(max-width:576px){h1{font-size:clamp(2.5rem,10vw,3rem)}h2{font-size:clamp(2rem,8vw,2.5rem)}.btn{padding:1rem 2rem;font-size:0.9rem}.promo-badge{position:relative;top:-50px;right:0;margin:0 auto;transform:rotate(0deg);width:90px;height:90px;font-size:1.1rem}.promo-box{padding:1.5rem;margin-top:3rem}}
+    @media(max-width:576px){h1{font-size:clamp(2.5rem,10vw,3rem)}h2{font-size:clamp(2rem,8vw,2.5rem)}.btn{padding:1rem 2rem;font-size:0.9rem}.promo-badge{position:relative;top:0;right:0;margin:0 auto;transform:rotate(0deg);width:90px;height:90px;font-size:1.1rem}.promo-box{padding:1.5rem;margin-top:3rem}}
   </style>
 </head>
 <body class="loading">
@@ -372,13 +372,16 @@
         <div class="comparison-container">
           <h2 class="text-center mb-16 fade-in">Notre <span class="text-gold">Distinction</span></h2>
           <div class="comparison-item fade-in delay-1">
-            <p class="comparison-text"><span class="comparison-label">C</span>Le sac Barocco est plus cher que notre sac <span class="highlight">Lumière Vivante</span> parce qu'il est fait avec des matériaux spéciaux, mais notre qualité reste inégalée.</p>
+            <p class="comparison-text"><span class="comparison-label">S</span> <span class="highlight">Lumière Vivante</span> incarne la perfection absolue grâce à un design inégalé et une attention méticuleuse aux détails.</p>
           </div>
           <div class="comparison-item fade-in delay-2">
-            <p class="comparison-text"><span class="comparison-label">C</span><span class="highlight">Lumière Vivante</span> est plus élégante que les autres boutiques parce que nos produits sont uniques et inspirés des plus belles créations parisiennes.</p>
+            <p class="comparison-text"><span class="comparison-label">C</span> Le sac Barocco est plus cher que notre sac <span class="highlight">Lumière Vivante</span> parce qu'il est fait avec des matériaux spéciaux, mais notre qualité reste inégalée.</p>
           </div>
           <div class="comparison-item fade-in delay-3">
-            <p class="comparison-text"><span class="comparison-label">S</span><span class="highlight">Lumière Vivante</span> est la boutique la plus sophistiquée de la ville parce que nous avons les meilleurs produits issus d'un savoir-faire artisanal d'exception.</p>
+            <p class="comparison-text"><span class="comparison-label">S</span> <span class="highlight">Lumière Vivante</span> est la boutique la plus sophistiquée de la ville grâce à un savoir-faire artisanal d'exception.</p>
+          </div>
+          <div class="comparison-item fade-in delay-4">
+            <p class="comparison-text"><span class="comparison-label">C</span> <span class="highlight">Lumière Vivante</span> se distingue des autres boutiques par des créations uniques inspirées par l'élégance parisienne.</p>
           </div>
         </div>
       </div>
@@ -431,114 +434,114 @@
     </section>
   </div>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const loader = document.getElementById('loader');
-      const loaderBar = document.getElementById('loader-bar');
-      const menuToggle = document.getElementById('menu-toggle');
-      const progressBar = document.getElementById('progress-bar');
-      const cursor = document.getElementById('cursor');
-      const cursorDot = document.getElementById('cursor-dot');
-      const scrollDots = document.querySelectorAll('.scroll-dot');
+    document.addEventListener('DOMContentLoaded',function(){
+      const loader=document.getElementById('loader');
+      const loaderBar=document.getElementById('loader-bar');
+      const menuToggle=document.getElementById('menu-toggle');
+      const progressBar=document.getElementById('progress-bar');
+      const cursor=document.getElementById('cursor');
+      const cursorDot=document.getElementById('cursor-dot');
+      const scrollDots=document.querySelectorAll('.scroll-dot');
       let fullpageInstance;
-      function initLoader() {
-        let progress = 0;
-        const interval = setInterval(() => {
-          progress += Math.random() * 10;
-          if (progress > 100) progress = 100;
-          loaderBar.style.width = progress + '%';
-          if (progress === 100) {
+      function initLoader(){
+        let progress=0;
+        const interval=setInterval(()=>{
+          progress+=Math.random()*10;
+          if(progress>100)progress=100;
+          loaderBar.style.width=progress+'%';
+          if(progress===100){
             clearInterval(interval);
-            setTimeout(() => {
+            setTimeout(()=>{
               loader.classList.add('hidden');
               document.body.classList.remove('loading');
               initAnimations();
-            }, 500);
+            },500);
           }
-        }, 200);
+        },200);
       }
-      function initCursor() {
-        if (window.matchMedia('(hover: hover)').matches) {
-          document.addEventListener('mousemove', (e) => {
-            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
-            cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      function initCursor(){
+        if(window.matchMedia('(hover: hover)').matches){
+          document.addEventListener('mousemove',(e)=>{
+            cursor.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
+            cursorDot.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;
           });
-          const interactiveElements = document.querySelectorAll('a, button, .product-card, .scroll-dot, .menu-toggle');
-          interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => { cursor.classList.add('active'); });
-            el.addEventListener('mouseleave', () => { cursor.classList.remove('active'); });
+          const interactiveElements=document.querySelectorAll('a,button,.product-card,.scroll-dot,.menu-toggle');
+          interactiveElements.forEach(el=>{
+            el.addEventListener('mouseenter',()=>{cursor.classList.add('active');});
+            el.addEventListener('mouseleave',()=>{cursor.classList.remove('active');});
           });
         }
       }
-      function initSwiper() {
-        new Swiper('#product-swiper', {
-          slidesPerView: 1,
-          spaceBetween: 30,
-          centeredSlides: true,
-          loop: true,
-          grabCursor: true,
-          effect: 'coverflow',
-          coverflowEffect: { rotate: 0, stretch: 0, depth: 100, modifier: 1, slideShadows: false },
-          pagination: { el: '.swiper-pagination', clickable: true },
-          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-          breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+      function initSwiper(){
+        new Swiper('#product-swiper',{
+          slidesPerView:1,
+          spaceBetween:30,
+          centeredSlides:true,
+          loop:true,
+          grabCursor:true,
+          effect:'coverflow',
+          coverflowEffect:{rotate:0,stretch:0,depth:100,modifier:1,slideShadows:false},
+          pagination:{el:'.swiper-pagination',clickable:true},
+          navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},
+          breakpoints:{768:{slidesPerView:2},1024:{slidesPerView:3}}
         });
       }
-      function initFullpage() {
-        fullpageInstance = new fullpage('#fullpage', {
-          anchors: ['accueil', 'produits', 'comparaisons', 'promotion', 'contact'],
-          menu: '#scroll-indicator',
-          navigation: false,
-          scrollingSpeed: 1000,
-          easing: 'easeInOutCubic',
-          verticalCentered: true,
-          responsiveWidth: 0,
-          afterLoad: function(origin, destination) {
-            const progress = (destination.index / (document.querySelectorAll('.section').length - 1)) * 100;
-            progressBar.style.width = `${progress}%`;
+      function initFullpage(){
+        fullpageInstance=new fullpage('#fullpage',{
+          anchors:['accueil','produits','comparaisons','promotion','contact'],
+          menu:'#scroll-indicator',
+          navigation:false,
+          scrollingSpeed:1000,
+          easing:'easeInOutCubic',
+          verticalCentered:true,
+          responsiveWidth:0,
+          afterLoad:function(origin,destination){
+            const progress=(destination.index/(document.querySelectorAll('.section').length-1))*100;
+            progressBar.style.width=`${progress}%`;
             updateSectionStatus(destination.index);
-            scrollDots.forEach((dot, index) => {
-              dot.classList.toggle('active', index === destination.index);
+            scrollDots.forEach((dot,index)=>{
+              dot.classList.toggle('active',index===destination.index);
             });
           },
-          onLeave: function(origin, destination) {
-            const fadeInElements = document.querySelectorAll(`.section[data-anchor="${destination.anchor}"] .fade-in`);
-            fadeInElements.forEach(el => el.classList.add('visible'));
-            const originElements = document.querySelectorAll(`.section[data-anchor="${origin.anchor}"] .fade-in`);
-            originElements.forEach(el => el.classList.remove('visible'));
+          onLeave:function(origin,destination){
+            const fadeInElements=document.querySelectorAll(`.section[data-anchor="${destination.anchor}"] .fade-in`);
+            fadeInElements.forEach(el=>el.classList.add('visible'));
+            const originElements=document.querySelectorAll(`.section[data-anchor="${origin.anchor}"] .fade-in`);
+            originElements.forEach(el=>el.classList.remove('visible'));
           }
         });
       }
-      function initEventListeners() {
-        menuToggle.addEventListener('click', () => { document.body.classList.toggle('menu-open'); });
-        document.querySelectorAll('.nav-link').forEach(link => {
-          link.addEventListener('click', () => { document.body.classList.remove('menu-open'); });
+      function initEventListeners(){
+        menuToggle.addEventListener('click',()=>{document.body.classList.toggle('menu-open');});
+        document.querySelectorAll('.nav-link').forEach(link=>{
+          link.addEventListener('click',()=>{document.body.classList.remove('menu-open');});
         });
-        scrollDots.forEach((dot, index) => {
-          dot.addEventListener('click', () => { fullpageInstance.moveTo(index + 1); });
+        scrollDots.forEach((dot,index)=>{
+          dot.addEventListener('click',()=>{fullpageInstance.moveTo(index+1);});
         });
-        window.addEventListener('resize', () => { if (fullpageInstance) { fullpageInstance.reBuild(); } });
+        window.addEventListener('resize',()=>{if(fullpageInstance){fullpageInstance.reBuild();}});
       }
-      function updateSectionStatus(activeIndex) {
-        document.querySelectorAll('.section').forEach((section, index) => {
-          const animations = section.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
-          animations.forEach(el => el.classList.toggle('visible', index === activeIndex));
+      function updateSectionStatus(activeIndex){
+        document.querySelectorAll('.section').forEach((section,index)=>{
+          const animations=section.querySelectorAll('.fade-in,.slide-in-left,.slide-in-right,.scale-in');
+          animations.forEach(el=>el.classList.toggle('visible',index===activeIndex));
         });
       }
-      function initAnimations() {
+      function initAnimations(){
         updateSectionStatus(0);
         gsap.registerPlugin(ScrollTrigger);
-        document.querySelectorAll('.product-card').forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            gsap.to(card, { y: -15, duration: 0.4, ease: 'power2.out', boxShadow: '0 20px 40px rgba(0,0,0,0.5)' });
-            gsap.to(card.querySelector('.product-image'), { scale: 1.1, duration: 0.7, ease: 'power2.out' });
+        document.querySelectorAll('.product-card').forEach(card=>{
+          card.addEventListener('mouseenter',()=>{
+            gsap.to(card,{y:-15,duration:0.4,ease:'power2.out',boxShadow:'0 20px 40px rgba(0,0,0,0.5)'});
+            gsap.to(card.querySelector('.product-image'),{scale:1.1,duration:0.7,ease:'power2.out'});
           });
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, { y: 0, duration: 0.4, ease: 'power2.out', boxShadow: '0 5px 30px rgba(0,0,0,0.3)' });
-            gsap.to(card.querySelector('.product-image'), { scale: 1, duration: 0.7, ease: 'power2.out' });
+          card.addEventListener('mouseleave',()=>{
+            gsap.to(card,{y:0,duration:0.4,ease:'power2.out',boxShadow:'0 5px 30px rgba(0,0,0,0.3)'});
+            gsap.to(card.querySelector('.product-image'),{scale:1,duration:0.7,ease:'power2.out'});
           });
         });
       }
-      function init() {
+      function init(){
         initLoader();
         initCursor();
         initFullpage();
@@ -548,6 +551,6 @@
       init();
     });
   </script>
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92c4d6302b18abc4","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.3.0","token":"dc79be98a7d9454985898a9490bd0402"}' crossorigin="anonymous"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"92c4d6302b18abc4","version":"2025.3.0","token":"dc79be98a7d9454985898a9490bd0402"}' crossorigin="anonymous"></script>
 </body>
 </html>
