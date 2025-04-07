@@ -1,2289 +1,367 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Lumière Vivante | Élégance Intemporelle</title>
-  <meta name="description" content="Lumière Vivante - Découvrez notre collection exclusive de produits de luxe qui allient élégance, raffinement et qualité exceptionnelle.">
-  <meta name="author" content="Lumière Vivante">
-  <meta property="og:title" content="Lumière Vivante | Élégance Intemporelle">
-  <meta property="og:description" content="Découvrez notre collection exclusive de produits de luxe qui allient élégance, raffinement et qualité exceptionnelle.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@lumierevivante">
-  <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullpage.js@3.1.2/dist/fullpage.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/fullpage.js@3.1.2/dist/fullpage.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <style>
-    :root {
-      /* Color palette */
-      --black: #000;
-      --dark-black: #0A0A0A;
-      --dark-gray: #121212;
-      --medium-gray: #333;
-      --light-gray: #888;
-      --white: #fff;
-      --gold: #D4AF37;
-      --gold-light: #F8E9A1;
-      --gold-hover: #B8941F;
-      --gold-transparent: rgba(212, 175, 55, 0.15);
-      --gold-glow: rgba(212, 175, 55, 0.3);
-      
-      /* Enhanced color additions */
-      --cream: #FFF8E7;
-      --beige: #F5F0E6;
-      --charcoal: #1C1C1C;
-      --soft-black: #111111;
-      --platinum: #E5E5E5;
-      --ivory: #FFFFF0;
-      --burgundy: #800020;
-      --navy: #000080;
-      --emerald: #046307;
-      
-      /* Typography */
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Montserrat', sans-serif;
-      
-      /* Transitions */
-      --transition-slow: 0.7s cubic-bezier(0.76, 0, 0.24, 1);
-      --transition-medium: 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-      --transition-fast: 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-      
-      /* Effects */
-      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.15);
-      --shadow-medium: 0 15px 40px rgba(0, 0, 0, 0.3);
-      --shadow-strong: 0 20px 50px rgba(0, 0, 0, 0.5);
-      --shadow-gold: 0 10px 30px rgba(212, 175, 55, 0.2);
-      --gradient-gold: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
-      --gradient-dark: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8));
-      --gradient-premium: linear-gradient(135deg, #D4AF37 0%, #F8E9A1 50%, #D4AF37 100%);
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    html, body {
-      overflow: hidden;
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      height: 100%;
-      width: 100%;
-      position: relative;
-    }
-    
-    body.loading {
-      overflow: hidden;
-    }
-    
-    h1, h2, h3, h4, h5 {
-      font-family: var(--font-serif);
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-    
-    h1 {
-      font-size: clamp(3.5rem, 9vw, 6.5rem);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-    
-    h2 {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 400;
-    }
-    
-    h3 {
-      font-size: clamp(1.8rem, 5vw, 3rem);
-    }
-    
-    p {
-      margin-bottom: 1.5rem;
-      font-size: clamp(1rem, 1.5vw, 1.25rem);
-      line-height: 1.8;
-      max-width: 65ch;
-      font-weight: 300;
-      letter-spacing: 0.01em;
-    }
-    
-    .container {
-      width: 100%;
-      max-width: 1440px;
-      padding: 0 clamp(1.5rem, 5vw, 6rem);
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      z-index: 5;
-      position: relative;
-    }
-    
-    /* Typography utilities */
-    .text-gold {
-      color: var(--gold);
-    }
-    
-    .italic {
-      font-style: italic;
-    }
-    
-    .uppercase {
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-    
-    .text-center {
-      text-align: center;
-    }
-    
-    .relative {
-      position: relative;
-    }
-    
-    /* Spacing utilities */
-    .mb-4 {
-      margin-bottom: 1rem;
-    }
-    
-    .mb-8 {
-      margin-bottom: 2rem;
-    }
-    
-    .mb-16 {
-      margin-bottom: 4rem;
-    }
-    
-    .mt-10 {
-      margin-top: 2.5rem;
-    }
-    
-    /* Section styling */
-    .section {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .section-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      overflow: hidden;
-    }
-    
-    .bg-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.05);
-      filter: brightness(0.85) contrast(1.15) saturate(1.1);
-    }
-    
-    .section-overlay {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
-      z-index: 2;
-      backdrop-filter: blur(1px);
-    }
-    
-    /* Enhanced custom cursor */
-    .cursor {
-      position: fixed;
-      width: 40px;
-      height: 40px;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
-      z-index: 9999;
-      transition: transform 0.2s, width 0.3s, height 0.3s, border-color 0.3s;
-      opacity: 0;
-    }
-    
-    .cursor-dot {
-      position: fixed;
-      width: 8px;
-      height: 8px;
-      background: var(--gold);
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 10000;
-      opacity: 0;
-      transition: transform 0.1s;
-    }
-    
-    @media(hover: hover) {
-      .cursor, .cursor-dot {
-        opacity: 1;
-      }
-    }
-    
-    .cursor.active {
-      width: 60px;
-      height: 60px;
-      border-color: var(--gold);
-      background-color: rgba(212, 175, 55, 0.1);
-    }
-    
-    /* Enhanced film grain effect */
-    .grain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 100;
-      opacity: 0.03;
-      mix-blend-mode: overlay;
-    }
-    
-    /* Enhanced loader styling */
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: var(--black);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-    
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-    
-    .loader-content {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    
-    .loader-logo {
-      font-family: var(--font-serif);
-      font-size: 2.8rem;
-      color: var(--white);
-      letter-spacing: 1px;
-      position: relative;
-    }
-    
-    .loader-logo::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--gradient-premium);
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: loaderLine 2s ease-in-out infinite;
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-    }
-    
-    @keyframes loaderLine {
-      0%, 100% {
-        transform: scaleX(0);
-      }
-      50% {
-        transform: scaleX(1);
-      }
-    }
-    
-    .loader-dots {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .loader-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--gold);
-      border-radius: 50%;
-      animation: dotPulse 1.5s infinite alternate;
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-    }
-    
-    .loader-dot:nth-child(2) {
-      animation-delay: 0.25s;
-    }
-    
-    .loader-dot:nth-child(3) {
-      animation-delay: 0.5s;
-    }
-    
-    @keyframes dotPulse {
-      0% {
-        transform: scale(0.8);
-        opacity: 0.5;
-      }
-      100% {
-        transform: scale(1.2);
-        opacity: 1;
-      }
-    }
-    
-    .loader-progress {
-      width: 280px;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.1);
-      position: relative;
-      overflow: hidden;
-      border-radius: 4px;
-    }
-    
-    .loader-bar {
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 0;
-      background: var(--gradient-premium);
-      transition: width 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-      box-shadow: 0 0 12px var(--gold);
-    }
-    
-    /* Enhanced header styling */
-    .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 2rem;
-      z-index: 90;
-      transition: all 0.4s ease;
-      mix-blend-mode: difference;
-    }
-    
-    .header-scrolled {
-      padding: 1rem 2rem;
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(15px);
-      mix-blend-mode: normal;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-    }
-    
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-    
-    .logo {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--white);
-      text-decoration: none;
-      position: relative;
-      z-index: 91;
-      letter-spacing: 2px;
-      transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-      text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .logo::before {
-      content: '';
-      display: block;
-      width: 8px;
-      height: 8px;
-      background: var(--gold);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--gold);
-      animation: pulseGlow 2s infinite alternate;
-    }
-    
-    @keyframes pulseGlow {
-      0% {
-        opacity: 0.7;
-        box-shadow: 0 0 5px var(--gold);
-      }
-      100% {
-        opacity: 1;
-        box-shadow: 0 0 15px var(--gold);
-      }
-    }
-    
-    .logo::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 100%;
-      height: 1px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s ease;
-    }
-    
-    .logo:hover {
-      opacity: 0.9;
-      transform: translateY(-3px);
-      text-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
-    }
-    
-    .logo:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    
-    /* Menu toggle styling */
-    .menu-toggle {
-      width: 50px;
-      height: 50px;
-      position: relative;
-      cursor: pointer;
-      z-index: 91;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-      background-color: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .menu-toggle:hover {
-      background-color: rgba(212, 175, 55, 0.15);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .hamburger {
-      width: 30px;
-      height: 2px;
-      background: var(--white);
-      position: relative;
-      transition: all 0.3s ease;
-    }
-    
-    .hamburger::before, .hamburger::after {
-      content: '';
-      position: absolute;
-      width: 30px;
-      height: 2px;
-      background: var(--white);
-      transition: all 0.3s ease;
-    }
-    
-    .hamburger::before {
-      transform: translateY(-8px);
-    }
-    
-    .hamburger::after {
-      transform: translateY(8px);
-    }
-    
-    body.menu-open .hamburger {
-      background: transparent;
-    }
-    
-    body.menu-open .hamburger::before {
-      transform: rotate(45deg);
-    }
-    
-    body.menu-open .hamburger::after {
-      transform: rotate(-45deg);
-    }
-    
-    /* Enhanced navigation overlay styling */
-    .nav-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(15px);
-      z-index: 89;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-    
-    body.menu-open .nav-overlay {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
-      list-style: none;
-      text-align: center;
-    }
-    
-    .nav-links li {
-      transform: translateY(30px);
-      opacity: 0;
-      transition: transform 0.5s ease, opacity 0.5s ease;
-    }
-    
-    body.menu-open .nav-links li {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    body.menu-open .nav-links li:nth-child(1) {
-      transition-delay: 0.1s;
-    }
-    
-    body.menu-open .nav-links li:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-    
-    body.menu-open .nav-links li:nth-child(3) {
-      transition-delay: 0.3s;
-    }
-    
-    body.menu-open .nav-links li:nth-child(4) {
-      transition-delay: 0.4s;
-    }
-    
-    body.menu-open .nav-links li:nth-child(5) {
-      transition-delay: 0.5s;
-    }
-    
-    .nav-link {
-      position: relative;
-      color: var(--white);
-      text-decoration: none;
-      font-size: 1.7rem;
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      transition: all 0.4s ease;
-      padding: 0.5rem 1.5rem;
-      display: inline-block;
-      overflow: hidden;
-    }
-    
-    .nav-link:hover {
-      color: var(--gold);
-      transform: translateY(-3px);
-      text-shadow: 0 5px 15px rgba(212, 175, 55, 0.5);
-    }
-    
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-      box-shadow: 0 0 10px var(--gold);
-    }
-    
-    .nav-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    
-    /* Scroll indicator styling */
-    .scroll-indicator {
-      position: fixed;
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 50;
-    }
-    
-    .scroll-dots {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: center;
-    }
-    
-    .scroll-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-      position: relative;
-    }
-    
-    .scroll-dot.active {
-      background: var(--gold);
-      border-color: var(--gold);
-      transform: scale(1.3);
-      box-shadow: 0 0 15px var(--gold);
-    }
-    
-    .scroll-dot:hover:not(.active) {
-      border-color: rgba(255, 255, 255, 0.8);
-      transform: scale(1.2);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-    }
-    
-    .scroll-dot-label {
-      position: absolute;
-      right: 25px;
-      white-space: nowrap;
-      font-size: 0.8rem;
-      font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--white);
-      opacity: 0;
-      transform: translateX(-10px);
-      transition: all 0.3s ease;
-      pointer-events: none;
-    }
-    
-    .scroll-dot:hover + .scroll-dot-label {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    
-    /* Enhanced progress bar styling */
-    .progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.05);
-      z-index: 95;
-    }
-    
-    .progress-bar {
-      height: 100%;
-      background: var(--gradient-premium);
-      width: 0;
-      transition: width 0.3s ease;
-      box-shadow: 0 0 15px var(--gold);
-    }
-    
-    /* Enhanced hero section styling */
-    .hero-content {
-      text-align: center;
-      position: relative;
-      z-index: 5;
-      max-width: 900px;
-    }
-    
-    .hero-title {
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.7);
-    }
-    
-    .hero-title::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 150px;
-      height: 3px;
-      background: var(--gradient-premium);
-      box-shadow: 0 0 15px var(--gold);
-      border-radius: 2px;
-    }
-    
-    .hero-subtitle {
-      color: var(--gold-light);
-      font-size: clamp(1.2rem, 3vw, 1.8rem);
-      margin-bottom: 2.5rem;
-      font-style: italic;
-      text-shadow: 0 3px 15px rgba(0, 0, 0, 0.7);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-    
-    /* Enhanced button styling */
-    .btn {
-      display: inline-block;
-      padding: 1.2rem 3rem;
-      background: var(--gradient-premium);
-      color: var(--black);
-      font-family: var(--font-sans);
-      font-weight: 500;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-      border-radius: 2px;
-      z-index: 1;
-    }
-    
-    .btn:hover {
-      background: var(--gold-hover);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
-    }
-    
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transform: translateX(-100%);
-      transition: transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
-      z-index: -1;
-    }
-    
-    .btn:hover::before {
-      transform: translateX(100%);
-    }
-    
-    .btn::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: rgba(0, 0, 0, 0.2);
-      z-index: -2;
-    }
-    
-    /* Enhanced product carousel styling */
-    .product-carousel {
-      width: 100%;
-      max-width: 1300px;
-      margin: 0 auto;
-      position: relative;
-      overflow: visible;
-    }
-    
-    .swiper-slide {
-      opacity: 0.3;
-      transform: scale(0.85);
-      filter: blur(2px);
-      transition: all 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    
-    .swiper-slide-active {
-      opacity: 1;
-      transform: scale(1);
-      filter: blur(0);
-    }
-    
-    .product-card {
-      background: rgba(15, 15, 15, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 2px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-      height: 100%;
-      backdrop-filter: blur(10px);
-      position: relative;
-    }
-    
-    .product-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(212, 175, 55, 0.03), transparent);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-    }
-    
-    .product-card:hover::before {
-      opacity: 1;
-    }
-    
-    .product-card:hover {
-      transform: translateY(-20px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.2);
-      border-color: var(--gold);
-    }
-    
-    .product-image-container {
-      position: relative;
-      width: 100%;
-      height: 350px;
-      overflow: hidden;
-    }
-    
-    .product-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    
-    .product-card:hover .product-image {
-      transform: scale(1.15);
-    }
-    
-    .product-tag {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: rgba(0, 0, 0, 0.7);
-      color: var(--white);
-      padding: 0.5rem 1.2rem;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      z-index: 2;
-      backdrop-filter: blur(10px);
-      border-left: 3px solid var(--gold);
-      transition: all 0.4s ease;
-      transform: translateY(0);
-    }
-    
-    .product-card:hover .product-tag {
-      background: rgba(212, 175, 55, 0.9);
-      color: var(--black);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .product-info {
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      position: relative;
-    }
-    
-    .product-info::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50%;
-      height: 1px;
-      background: var(--gradient-premium);
-      opacity: 0.3;
-    }
-    
-    .product-title {
-      font-size: 1.6rem;
-      margin-bottom: 0.5rem;
-      color: var(--white);
-      font-weight: 400;
-      letter-spacing: 0.03em;
-      transition: color 0.3s ease;
-    }
-    
-    .product-card:hover .product-title {
-      color: var(--gold-light);
-    }
-    
-    .product-subtitle {
-      color: var(--gold);
-      font-style: italic;
-      margin-bottom: 1.2rem;
-      font-size: 0.95rem;
-      letter-spacing: 0.05em;
-    }
-    
-    .product-description {
-      margin-bottom: 1.8rem;
-      flex-grow: 1;
-      opacity: 0.8;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      font-weight: 300;
-      transition: opacity 0.3s ease;
-    }
-    
-    .product-card:hover .product-description {
-      opacity: 1;
-    }
-    
-    .product-price {
-      font-size: 1.3rem;
-      font-weight: 400;
-      color: var(--gold-light);
-      margin-bottom: 1.8rem;
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
-    }
-    
-    .product-card:hover .product-price {
-      transform: scale(1.05);
-      color: var(--gold);
-    }
-    
-    .product-action {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .product-link {
-      color: var(--white);
-      text-decoration: none;
-      position: relative;
-      display: inline-block;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      padding-bottom: 5px;
-      transition: all 0.4s ease;
-      font-weight: 300;
-    }
-    
-    .product-link:hover {
-      color: var(--gold);
-      transform: translateY(-2px);
-    }
-    
-    .product-link::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    
-    .product-link:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-    
-    .product-icon {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: rgba(212, 175, 55, 0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-      cursor: pointer;
-      border: 1px solid rgba(212, 175, 55, 0.2);
-    }
-    
-    .product-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--gold);
-      transition: all 0.3s ease;
-    }
-    
-    .product-icon:hover {
-      background: var(--gold);
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-    }
-    
-    .product-icon:hover svg {
-      stroke: var(--black);
-      transform: translateX(2px);
-    }
-    
-    /* Enhanced swiper navigation styling */
-    .swiper-button-prev, .swiper-button-next {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: rgba(15, 15, 15, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    }
-    
-    .swiper-button-prev:hover, .swiper-button-next:hover {
-      background: var(--gold);
-      color: var(--black);
-      transform: scale(1.15);
-      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
-    }
-    
-    .swiper-button-prev::after, .swiper-button-next::after {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    
-    .swiper-pagination-bullet {
-      width: 10px;
-      height: 10px;
-      background: rgba(255, 255, 255, 0.5);
-      opacity: 1;
-      transition: all 0.3s ease;
-    }
-    
-    .swiper-pagination-bullet-active {
-      background: var(--gold);
-      transform: scale(1.2);
-      box-shadow: 0 0 10px var(--gold);
-    }
-    
-    /* Enhanced comparison section styling */
-    .comparison-container {
-      max-width: 1000px;
-      width: 100%;
-    }
-    
-    .comparison-item {
-      border-left: 3px solid var(--gold);
-      padding: 2.5rem;
-      margin-bottom: 3rem;
-      position: relative;
-      transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-      transform: translateX(0);
-      background: rgba(212, 175, 55, 0.05);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(5px);
-    }
-    
-    .comparison-item::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: 20px;
-      width: 25px;
-      height: 25px;
-      background: var(--gradient-premium);
-      border-radius: 50%;
-      opacity: 0;
-      transform: scale(0);
-      transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-      box-shadow: 0 0 15px var(--gold);
-    }
-    
-    .comparison-item:hover::before {
-      opacity: 1;
-      transform: scale(1);
-    }
-    
-    .comparison-item:hover {
-      transform: translateX(15px);
-      background: rgba(212, 175, 55, 0.1);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.1);
-    }
-    
-    .comparison-text {
-      font-size: 1.3rem;
-      line-height: 1.9;
-      font-weight: 300;
-      letter-spacing: 0.02em;
-    }
-    
-    .highlight {
-      color: var(--gold);
-      font-weight: 500;
-    }
-    
-    /* Enhanced promo section styling */
-    .promo-container {
-      max-width: 1000px;
-      width: 100%;
-      position: relative;
-    }
-    
-    .promo-badge {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: var(--gradient-premium);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      color: var(--black);
-      font-weight: 600;
-      font-size: 2rem;
-      position: absolute;
-      top: -80px;
-      right: -80px;
-      transform: rotate(15deg);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.6);
-      z-index: 10;
-      text-align: center;
-      padding: 1rem;
-      animation: float 4s ease-in-out infinite;
-      font-family: var(--font-serif);
-      border: 2px solid rgba(255, 255, 255, 0.8);
-    }
-    
-    .promo-discount {
-      font-size: 2.5rem;
-      display: block;
-      line-height: 1;
-    }
-    
-    .promo-text {
-      font-size: 1rem;
-      display: block;
-      font-weight: 400;
-      margin-top: 0.5rem;
-    }
-    
-    .promo-box {
-      background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(5, 5, 5, 0.9));
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 4.5rem 3.5rem 3.5rem;
-      position: relative;
-      overflow: visible;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-      transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-      backdrop-filter: blur(10px);
-    }
-    
-    .promo-box:hover {
-      transform: scale(1.03);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(212, 175, 55, 0.2);
-      border-color: rgba(212, 175, 55, 0.5);
-    }
-    
-    .promo-box::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    
-    /* Enhanced footer styling */
-    .footer {
-      background: linear-gradient(to bottom, var(--dark-gray), var(--black));
-      padding: 7rem 2rem 5rem;
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--gradient-premium);
-      opacity: 0.3;
-    }
-    
-    .footer-logo {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      color: var(--white);
-      margin-bottom: 2.5rem;
-      display: inline-block;
-      position: relative;
-      letter-spacing: 0.05em;
-    }
-    
-    .footer-logo::after {
-      content: '';
-      position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50px;
-      height: 2px;
-      background: var(--gold);
-      box-shadow: 0 0 15px var(--gold);
-    }
-    
-    .footer-text {
-      max-width: 550px;
-      margin: 0 auto 3rem;
-      opacity: 0.7;
-      font-weight: 300;
-      letter-spacing: 0.01em;
-      line-height: 1.8;
-    }
-    
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-bottom: 3.5rem;
-      flex-wrap: wrap;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 3.5rem;
-    }
-    
-    .social-link {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      text-decoration: none;
-      transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-      font-size: 0.9rem;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(5px);
-    }
-    
-    .social-link:hover {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
-    }
-    
-    .copyright {
-      opacity: 0.5;
-      font-size: 0.9rem;
-      font-weight: 300;
-      letter-spacing: 0.03em;
-    }
-    
-    /* Enhanced animation classes */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .slide-in-right {
-      transform: translateX(50px);
-      opacity: 0;
-      transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    
-    .slide-in-right.visible {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    
-    .slide-in-left {
-      transform: translateX(-50px);
-      opacity: 0;
-      transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    
-    .slide-in-left.visible {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    
-    .scale-in {
-      transform: scale(0.9);
-      opacity: 0;
-      transition: all 1.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    
-    .scale-in.visible {
-      transform: scale(1);
-      opacity: 1;
-    }
-    
-    .delay-1 {
-      transition-delay: 0.15s;
-    }
-    
-    .delay-2 {
-      transition-delay: 0.3s;
-    }
-    
-    .delay-3 {
-      transition-delay: 0.45s;
-    }
-    
-    .delay-4 {
-      transition-delay: 0.6s;
-    }
-    
-    .delay-5 {
-      transition-delay: 0.75s;
-    }
-    
-    /* Hide FullPage.js watermark */
-    .fp-watermark {
-      display: none !important;
-    }
-    
-    .fp-slidesNav {
-      display: none !important;
-    }
-    
-    /* Enhanced animations */
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
-      }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
-      }
-    }
-    
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(15deg);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.6);
-      }
-      50% {
-        transform: translateY(-20px) rotate(15deg);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1), 0 0 40px rgba(212, 175, 55, 0.4);
-      }
-      100% {
-        transform: translateY(0) rotate(15deg);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(212, 175, 55, 0.6);
-      }
-    }
-    
-    @keyframes shimmer {
-      0% {
-        background-position: -100% 0;
-      }
-      100% {
-        background-position: 100% 0;
-      }
-    }
-    
-    /* Enhanced responsive styles */
-    @media(max-width: 1024px) {
-      .scroll-indicator {
-        display: none;
-      }
-      
-      .promo-badge {
-        width: 140px;
-        height: 140px;
-        font-size: 1.8rem;
-        top: -70px;
-        right: -70px;
-      }
-      
-      .promo-box {
-        padding: 3.5rem 2.5rem 2.5rem;
-      }
-      
-      .hero-title::after {
-        width: 120px;
-      }
-    }
-    
-    @media(max-width: 768px) {
-      .nav-link {
-        font-size: 1.4rem;
-      }
-      
-      .nav-links {
-        gap: 2rem;
-      }
-      
-      .comparison-text {
-        font-size: 1.15rem;
-      }
-      
-      .footer-links {
-        gap: 2rem;
-      }
-      
-      .promo-badge {
-        width: 120px;
-        height: 120px;
-        font-size: 1.5rem;
-        transform: rotate(10deg);
-      }
-      
-      .promo-discount {
-        font-size: 2rem;
-      }
-      
-      .hero-title::after {
-        width: 100px;
-      }
-      
-      .btn {
-        padding: 1.1rem 2.5rem;
-      }
-    }
-    
-    @media(max-width: 576px) {
-      h1 {
-        font-size: clamp(2.5rem, 12vw, 3.5rem);
-      }
-      
-      h2 {
-        font-size: clamp(2rem, 8vw, 2.5rem);
-      }
-      
-      .btn {
-        padding: 1rem 2.2rem;
-        font-size: 0.9rem;
-      }
-      
-      .promo-badge {
-        position: relative;
-        top: 0;
-        right: 0;
-        margin: 0 auto 2.5rem;
-        transform: rotate(0deg);
-        width: 110px;
-        height: 110px;
-        font-size: 1.3rem;
-        animation: pulse 2s infinite;
-      }
-      
-      .promo-box {
-        padding: 2.5rem 1.8rem;
-        margin-top: 0;
-      }
-      
-      .comparison-item {
-        padding: 2rem 1.5rem;
-      }
-      
-      .product-info {
-        padding: 2rem 1.5rem;
-      }
-      
-      .hero-title::after {
-        width: 80px;
-        bottom: -10px;
-      }
-    }
-    
-    /* Added effect for parallax depth */
-    .parallax-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 120%;
-      transform: translateZ(-10px) scale(2);
-      z-index: 0;
-    }
-    
-    /* Enhanced details element styling */
-    .product-detail {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      color: var(--white);
-      padding: 1rem;
-      transform: translateY(100%);
-      transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid var(--gold);
-      z-index: 3;
-    }
-    
-    .product-card:hover .product-detail {
-      transform: translateY(0);
-    }
-    
-    /* Shine effect for cards */
-    .shine-effect {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
-      background-size: 200% 100%;
-      animation: shimmer 2s infinite;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 5;
-    }
-    
-    .product-card:hover .shine-effect {
-      opacity: 1;
-    }
-  </style>
-</head>
-<body class="loading">
-  <div class="loader" id="loader">
-    <div class="loader-content">
-      <span class="loader-logo">Lumière Vivante</span>
-      <div class="loader-dots">
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-        <div class="loader-dot"></div>
-      </div>
-    </div>
-    <div class="loader-progress">
-      <div class="loader-bar" id="loader-bar"></div>
-    </div>
-  </div>
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-dot" id="cursor-dot"></div>
-  <div class="grain"></div>
-  <div class="progress-container">
-    <div class="progress-bar" id="progress-bar"></div>
-  </div>
-  <header class="header" id="header">
-    <div class="header-container">
-      <a href="#accueil" class="logo">Lumière Vivante</a>
-      <div class="menu-toggle" id="menu-toggle">
-        <div class="hamburger"></div>
-      </div>
-    </div>
-  </header>
-  <div class="nav-overlay" id="nav-overlay">
-    <ul class="nav-links">
-      <li><a href="#accueil" class="nav-link" data-menuanchor="accueil">Accueil</a></li>
-      <li><a href="#produits" class="nav-link" data-menuanchor="produits">Produits</a></li>
-      <li><a href="#comparaisons" class="nav-link" data-menuanchor="comparaisons">Comparaisons</a></li>
-      <li><a href="#promotion" class="nav-link" data-menuanchor="promotion">Promotion</a></li>
-      <li><a href="#contact" class="nav-link" data-menuanchor="contact">Contact</a></li>
-    </ul>
-  </div>
-  <div class="scroll-indicator" id="scroll-indicator">
-    <div class="scroll-dots">
-      <div class="scroll-dot active" data-anchor="accueil"></div>
-      <div class="scroll-dot-label">Accueil</div>
-      <div class="scroll-dot" data-anchor="produits"></div>
-      <div class="scroll-dot-label">Produits</div>
-      <div class="scroll-dot" data-anchor="comparaisons"></div>
-      <div class="scroll-dot-label">Comparaisons</div>
-      <div class="scroll-dot" data-anchor="promotion"></div>
-      <div class="scroll-dot-label">Promotion</div>
-      <div class="scroll-dot" data-anchor="contact"></div>
-      <div class="scroll-dot-label">Contact</div>
-    </div>
-  </div>
-  <div id="fullpage">
-    <section class="section" data-anchor="accueil">
-      <div class="section-bg">
-        <video autoplay loop muted playsinline class="bg-video">
-          <source src="https://assets.codepen.io/3364143/7btrrd.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="section-overlay"></div>
-      <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title fade-in">Lumière Vivante</h1>
-          <p class="hero-subtitle fade-in delay-1">Brillez dans la simplicité.</p>
-          <p class="fade-in delay-2 text-center">Notre magasin offre une atmosphère lumineuse, un luxe raffiné et un confort unique.</p>
-          <a href="#produits" class="btn fade-in delay-3">Découvrir la Collection</a>
-        </div>
-      </div>
-    </section>
-    <section class="section" data-anchor="produits">
-      <div class="section-bg" style="background: linear-gradient(to top, #000, #121212);"></div>
-      <div class="container">
-        <h2 class="text-center mb-16 fade-in">Nos Produits <span class="text-gold">Exceptionnels</span></h2>
-        <div class="product-carousel fade-in delay-1">
-          <div class="swiper" id="product-swiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Elegance raffinee</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw67cfd409/original/90_1001360-1A14437_5B000_18_CameoSilkShirt-Shirts~~Tops-Versace-online-store_0_2.jpg?sw=850&q=85&strip=true" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Chemise en soie Camee</h3>
-                    <p class="product-subtitle">Elegante, douce, brillante</p>
-                    <p class="product-description">Cette chemise en soie offre une élégance raffinée avec son imprimé unique et sa texture luxueuse.</p>
-                    <p class="product-price">CA 2.250$</p>
-                    <div class="product-action">
-                      <a href="#" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Chic moderne</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dwaa2a2720/original/90_1003900-1A14454_5B000_14_CameoLeggings-Leggings-Versace-online-store_1_1.jpg?sw=850&q=85&strip=true" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Leggings Camee</h3>
-                    <p class="product-subtitle">Moulants, confortables, stylés</p>
-                    <p class="product-description">Ces leggings offrent un confort optimal tout en maintenant une allure élégante.</p>
-                    <p class="product-price">CA 1.225$</p>
-                    <div class="product-action">
-                      <a href="#" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Design elegant</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw333dc921/original/90_1019459-D2VE_1B00V_22_OperaBowPatentPumps85mm-Pumps~~Slingbacks-Versace-online-store_0_1.jpg?sw=850&q=85&strip=true" alt="Escarpins vernis à noeud Opera 85mm" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Escarpins vernis à noeud Opera</h3>
-                    <p class="product-subtitle">Chics, vernis, raffinés</p>
-                    <p class="product-description">Ces escarpins ajoutent une touche d'élégance à toute tenue de soirée ou de bureau.</p>
-                    <p class="product-price">CA 1.325$</p>
-                    <div class="product-action">
-                      <a href="#" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Look sportif</span>
-                    <img src= "https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dwe219e487/original/90_1013167-1A05134_1B00V_24_GrecaGoddessSmallHoboBag-Shoulder~~Crossbody-Versace-online-store_1_5.jpg?sw=850&q=85&strip=true" alt="Sac hobo Greca Goddess" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Sac hobo Greca Goddess</h3>
-                    <p class="product-subtitle">Luxueux, pratique, doré</p>
-                    <p class="product-description">Ce sac allie fonctionnalité et style avec son design élégant et ses finitions dorées.</p>
-                    <p class="product-price">CA 2.050$</p>
-                    <div class="product-action">
-                      <a href="#" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Style urbain</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw0caaadfc/original/90_O2281-O10028764_ONUL_20_MedusaCat~EyeSunglasses-Sunglasses-Versace-online-store_0_1.jpg?sw=850&q=85&strip=true" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Lunettes de soleil oeil-de-chat Medusa</h3>
-                    <p class="product-subtitle">Modernes, audacieuses, sophistiquées</p>
-                    <p class="product-description">Ces lunettes de soleil offrent protection et style avec leur design avant-gardiste.</p>
-                    <p class="product-price">CA 562$</p>
-                    <div class="product-action">
-                      <a href="#" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Elegance raffinee</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dwad71a165/original/90_1003941-1A03044_5B000_18_Barocco~Silk~Shirt-Clothing-Versace-online-store_5_1.jpg?sw=850&q=85&strip=true" alt="Chemise Barocco en soie" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Chemise Barocco en soie</h3>
-                    <p class="product-subtitle">Elegance raffinee – Noir et or, imprimé Barocco</p>
-                    <p class="product-description">Chemise en soie 100% luxueuse avec un imprimé Barocco raffiné.</p>
-                    <p class="product-price">CA 2.250$</p>
-                    <div class="product-action">
-                      <a href="https://www.versace.com/ca/en/men/clothing/shirts/barocco-silk-shirt/1003941-1A03044_5B000.html" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Chic moderne</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw5ad3e494/original/90_1017637-1A12659_1B000_18_Barocco~Jacquard~Lurex~Sweatpants-Pants~~Shorts-Versace-online-store_0_0.jpg?sw=850&q=85&strip=true" alt="Pantalon Barocco Lurex" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Pantalon Barocco Lurex</h3>
-                    <p class="product-subtitle">Chic moderne – Noir, bandes brillantes, coton et lurex</p>
-                    <p class="product-description">Pantalon en coton et lurex alliant confort et style moderne.</p>
-                    <p class="product-price">CA 1.975$</p>
-                    <div class="product-action">
-                      <a href="https://www.versace.com/ca/en/men/clothing/pants-shorts/barocco-jacquard-lurex-sweatpants/1017637-1A12659_1B000.html" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Design elegant</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw2f4339a0/original/90_1011564-1A14758_2B15V_22_Barocco~Athena~Raffia~Small~Tote~Bag-Totes-Versace-online-store_0_0.jpg?sw=850&q=85&strip=true" alt="Sac Barocco Athena" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Sac Barocco Athena</h3>
-                    <p class="product-subtitle">Design elegant – Petit format, raphia et cuir</p>
-                    <p class="product-description">Sac tote chic en raphia et cuir, parfait pour un look sophistiqué.</p>
-                    <p class="product-price">CA 2.250$</p>
-                    <div class="product-action">
-                      <a href="https://www.versace.com/ca/en/women/bags/totes/barocco-athena-raffia-small-tote-bag/1011564-1A14758_2B15V.html" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Look sportif</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dwcaf9a356/original/90_PVE9K002-P0024_PNUL_26_VersaceChronoXWatch-Watches-Versace-online-store_0_2.jpg?sw=850&q=85&strip=true" alt="Montre Versace Chrono X" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Montre Versace Chrono X</h3>
-                    <p class="product-subtitle">Look sportif – Bracelet recyclé, logo Medusa</p>
-                    <p class="product-description">Montre innovante alliant style sportif et design écoresponsable.</p>
-                    <p class="product-price">CA 2.030$</p>
-                    <div class="product-action">
-                      <a href="https://www.versace.com/ca/en/men/accessories/watches/versace-chrono-x-watch/PVE9K002-P0024_PNUL.html" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="product-card">
-                  <div class="product-image-container">
-                    <span class="product-tag">Style urbain</span>
-                    <img src="https://www.versace.com/dw/image/v2/BGWN_PRD/on/demandware.static/-/Sites-ver-master-catalog/default/dw0138cb97/original/90_1016306-1A14686_2B15V_22_Versace~Mercury~M_VS_04~Sneakers-Sneakers-Versace-online-store_0_0.jpg?sw=850&q=85&strip=true" alt="Baskets Mercury M_VS_04" class="product-image">
-                  </div>
-                  <div class="product-info">
-                    <h3 class="product-title">Baskets Mercury M_VS_04</h3>
-                    <p class="product-subtitle">Style urbain – Semelle Greca, cuir et polyester</p>
-                    <p class="product-description">Sneakers modernes pour un look urbain et raffiné.</p>
-                    <p class="product-price">CA 1.175$</p>
-                    <div class="product-action">
-                      <a href="https://www.versace.com/ca/en/men/shoes/sneakers/versace-mercury-m_vs_04-sneakers/1016306-1A14686_2B15V.html" class="product-link">En savoir plus</a>
-                      <div class="product-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12h14"></path>
-                          <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-          </div>
-        </div>
-        <p class="text-center text-gold italic mt-10 fade-in delay-4">Notre collection exclusive incarne l'élégance et le raffinement.</p>
-      </div>
-    </section>
-    <section class="section" data-anchor="comparaisons">
-      <div class="section-bg" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1579547945413-497e1b99dac0?q=80&w=2039') no-repeat center/cover;"></div>
-      <div class="section-overlay"></div>
-      <div class="container">
-        <div class="comparison-container">
-          <h2 class="text-center mb-16 fade-in">Notre <span class="text-gold">Distinction</span></h2>
-          
-          <div class="comparison-item fade-in delay-1">
-            <p class="comparison-text">S - C'est notre chemise la plus populaire parce qu'elle est douce et belle.</p>
-          </div>
-          
-          <div class="comparison-item fade-in delay-2">
-            <p class="comparison-text">C- Le sac Barocco est plus cher que notre sac Lumière Vivante parce qu'il est fait avec des matériaux spéciaux</p>
-          </div>
-          
-          <div class="comparison-item fade-in delay-3">
-            <p class="comparison-text">S - Lumière Vivante est la boutique la plus sophistiquée de la ville parce que nous avons les meilleurs produits</p>
-          </div>
-          
-          <div class="comparison-item fade-in delay-4">
-            <p class="comparison-text">C - Lumière Vivante est plus élégante que les autres boutiques parce que nos produits sont uniques</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section" data-anchor="promotion">
-      <div class="section-bg">
-        <video autoplay loop muted playsinline class="bg-video">
-          <source src="https://assets.codepen.io/3364143/bglght.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="container">
-        <div class="promo-container">
-          <div class="promo-box fade-in">
-            <div class="promo-badge fade-in delay-1">
-              <span class="promo-discount">-20%</span>
-              <span class="promo-text">Offre limitée</span>
-            </div>
-            <h2 class="text-center mb-8 fade-in delay-2">Offre Spéciale de Pâques</h2>
-            <p class="text-center text-gold text-xl mb-8 fade-in delay-3">-20% sur tous les produits chez Lumière Vivante!</p>
-            <p class="text-center mb-10 fade-in delay-4">Profitez de cette vente exclusive pour découvrir notre collection unique de pièces d'exception.</p>
-            <div class="text-center fade-in delay-5">
-              <a href="#produits" class="btn">Découvrir la Collection</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section fp-auto-height" data-anchor="contact">
-      <div class="section-bg" style="background: var(--dark-gray);"></div>
-      <div class="footer">
-        <div class="container">
-          <span class="footer-logo fade-in">Lumière Vivante</span>
-          <p class="footer-text fade-in delay-1">Notre magasin offre une atmosphère lumineuse, un luxe raffiné et un confort unique que vous ne trouverez nulle part ailleurs.</p>
-          <div class="footer-links fade-in delay-2">
-            <a href="#accueil" class="nav-link">Accueil</a>
-            <a href="#produits" class="nav-link">Produits</a>
-            <a href="#comparaisons" class="nav-link">Comparaisons</a>
-            <a href="#promotion" class="nav-link">Promotion</a>
-            <a href="#contact" class="nav-link">Contact</a>
-          </div>
-          <div class="social-links fade-in delay-3">
-            <a href="#" class="social-link">FB</a>
-            <a href="#" class="social-link">IG</a>
-            <a href="#" class="social-link">TW</a>
-            <a href="#" class="social-link">PT</a>
-          </div>
-          <p class="copyright fade-in delay-4">&copy; 2025 Lumière Vivante. Tous droits réservés.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Elements
-      const loader = document.getElementById('loader');
-      const loaderBar = document.getElementById('loader-bar');
-      const menuToggle = document.getElementById('menu-toggle');
-      const progressBar = document.getElementById('progress-bar');
-      const cursor = document.getElementById('cursor');
-      const cursorDot = document.getElementById('cursor-dot');
-      const scrollDots = document.querySelectorAll('.scroll-dot');
-      const header = document.getElementById('header');
-      let fullpageInstance;
-      
-      // Enhanced loader animation
-      function initLoader() {
-        gsap.to(loaderBar, {
-          width: "100%",
-          duration: 2,
-          ease: "power2.inOut",
-          onComplete: () => {
-            gsap.to(loader, {
-              opacity: 0,
-              duration: 0.5,
-              onComplete: () => {
-                loader.classList.add('hidden');
-                document.body.classList.remove('loading');
-                initAnimations();
-              }
-            });
-          }
-        });
-      }
-      
-      // Custom cursor with improved tracking
-      function initCursor() {
-        if (window.matchMedia('(hover: hover)').matches) {
-          document.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, {
-              x: e.clientX,
-              y: e.clientY,
-              duration: 0.2,
-              ease: "power2.out"
-            });
-            gsap.set(cursorDot, {
-              x: e.clientX,
-              y: e.clientY
-            });
-          });
-          
-          const interactiveElements = document.querySelectorAll('a, button, .product-card, .scroll-dot, .menu-toggle, .comparison-item');
-          interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-              cursor.classList.add('active');
-            });
-            el.addEventListener('mouseleave', () => {
-              cursor.classList.remove('active');
-            });
-          });
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumière Vivante - Avis Clients</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <style>
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-      }
-      
-      // Swiper initialization with no auto-scroll
-      function initSwiper() {
-        new Swiper('#product-swiper', {
-          slidesPerView: 1,
-          spaceBetween: 30,
-          centeredSlides: true,
-          loop: true,
-          grabCursor: true,
-          effect: 'coverflow',
-          coverflowEffect: {
-            rotate: 5,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: false
-          },
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          },
-          speed: 800,
-          breakpoints: {
-            768: {
-              slidesPerView: 2
-            },
-            1024: {
-              slidesPerView: 3
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #020208, #080510, #000000, #100515);
+            background-size: 400% 400%;
+            animation: gradientBG 45s ease infinite;
+            color: #e8e8e8;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            padding: 2rem 1rem;
+        }
+
+        .review-container {
+            max-width: 90%;
+            width: 750px;
+            padding: 2.8rem 1.8rem;
+            background: rgba(12, 12, 22, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 18px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0px rgba(255, 255, 255, 0.03);
+            border: 1px solid;
+            border-image-source: linear-gradient(to bottom right, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            border-image-slice: 1;
+            margin-bottom: 90px;
+            position: relative;
+        }
+
+        .review-content {
+            min-height: 190px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .review-rating {
+             font-size: 1.35rem;
+             color: #EACD84; /* Softer gold */
+             margin-bottom: 1.2rem;
+             opacity: 0;
+             transform: translateY(10px);
+             will-change: opacity, transform;
+             letter-spacing: 3px;
+        }
+
+        .review-text {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-weight: 400;
+            line-height: 1.75;
+            color: #F0F0F0; /* Slightly off-white */
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(10px);
+            will-change: opacity, transform, filter;
+            font-style: italic;
+        }
+
+        .reviewer-name {
+            font-size: clamp(0.9rem, 2vw, 1.05rem);
+            font-weight: 300;
+            color: #B0B0D0; /* Slightly softer author color */
+            opacity: 0;
+            transform: translateY(10px);
+            will-change: opacity, transform, filter;
+            font-style: normal; /* Keep name non-italic maybe */
+        }
+
+        .status-message {
+            font-size: 1.1rem;
+            font-weight: 300;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #888899;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            width: 85%;
+        }
+
+        .status-message.visible {
+             opacity: 1;
+        }
+
+        .status-message.error {
+             color: #ff8888;
+             font-weight: 400;
+        }
+
+        .presentation-button {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: inline-block;
+            padding: 13px 30px;
+            background-color: #CFAE4E; /* Refined gold */
+            color: #15151a; /* Darker text */
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            border-radius: 8px; /* Slightly more rounded */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.35s ease;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+        }
+
+        .presentation-button:hover {
+            background-color: #DABF60; /* Lighter gold on hover */
+            transform: translateX(-50%) translateY(-3px); /* Slightly more lift */
+            box-shadow: 0 8px 25px rgba(207, 174, 78, 0.4); /* Gold glow */
+        }
+
+         .presentation-button:active {
+             transform: translateX(-50%) translateY(0px);
+             background-color: #B89B3A; /* Darker gold */
+             box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+         }
+
+    </style>
+</head>
+<body>
+
+    <div class="review-container">
+        <div class="review-content">
+            <p class="review-rating" id="review-rating"></p>
+            <p class="review-text" id="review-text"></p>
+            <p class="reviewer-name" id="reviewer-name"></p>
+            <p class="status-message" id="status-message"></p>
+        </div>
+    </div>
+
+    <a href="/presentation" class="presentation-button">
+        Découvrir la Présentation
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <script>
+        const apiKey = "AIzaSyAtIJNuqJsnifU3Ez3CNEtjUrhQWbB1N7o"; // WARNING: Exposed API Key
+        const modelName = "gemini-2.0-flash-lite";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+        const REVIEW_INTERVAL_MS = 2500; // Slightly longer interval
+        const SEPARATOR = ' :: ';
+        const STAR_RATING = '★★★★★';
+
+        const reviewRatingElement = document.getElementById('review-rating');
+        const reviewTextElement = document.getElementById('review-text');
+        const reviewerNameElement = document.getElementById('reviewer-name');
+        const statusMessageElement = document.getElementById('status-message');
+        const elementsToAnimate = [reviewRatingElement, reviewTextElement, reviewerNameElement];
+
+        let localReviewsBatch = [];
+        let currentBatchIndex = 0;
+        let isFetching = false;
+        let intervalId = null;
+
+        console.warn("DEMO ONLY: API Key is exposed directly in the frontend code. Do not use this method in production.");
+
+        function showStatus(message, isError = false) {
+            statusMessageElement.textContent = message;
+            statusMessageElement.classList.add('visible');
+            statusMessageElement.classList.toggle('error', isError);
+            gsap.to(elementsToAnimate, { opacity: 0, duration: 0.4 });
+        }
+
+        function hideStatus() {
+             statusMessageElement.classList.remove('visible');
+        }
+
+        async function fetchNewReviewsBatch() {
+            if (isFetching) return null;
+            isFetching = true;
+            showStatus("Recherche d'avis clients...");
+
+            const prompt = `Génère exactement 5 paires uniques 'avis client :: nom client'.
+Chaque avis doit ressembler à une critique client courte et très positive (review) pour la marque de mode de luxe 'Lumière Vivante'. Il doit exprimer l'enthousiasme et la satisfaction.
+L'avis doit mentionner ou suggérer :
+- La qualité exceptionnelle des articles (ex: tissu incroyable, coupe parfaite, matière divine).
+- Le sentiment procuré (ex: confiance, élégance, éclat, unique, magnifique).
+- Parfois, faire allusion à une bonne affaire, une collection spéciale, ou un service client excellent (ex: "trouvé lors des ventes privées", "pièce maîtresse de la nouvelle collection", "conseils personnalisés au top", "un classique intemporel").
+- Utiliser un ton élogieux, chic et personnel.
+Chaque nom client doit être un nom de personne fictif, à consonance française et élégante (prénom et nom).
+Utilise '${SEPARATOR}' comme séparateur exact entre l'avis et le nom.
+Ne mets pas de guillemets autour de l'avis. Une paire par ligne.
+
+Exemple de format :
+Absolument sublime ! La robe en soie Lumière Vivante est d'une fluidité incroyable, je me sens magnifique.${SEPARATOR}Aurélie Dubois
+Ce manteau en cachemire est un rêve. Qualité irréprochable et coupe divine. Trouvé grâce aux conseils personnalisés !${SEPARATOR}Jean-Philippe Moreau
+J'ai craqué pour un chemisier de la nouvelle collection Lumière Vivante... Il illumine mon teint, que des compliments ! Vaut chaque euro.${SEPARATOR}Élodie Lemaître
+Le tailleur pantalon est d'une coupe parfaite. Je me sens puissante et chic. Un investissement mode intemporel que je ne regrette pas.${SEPARATOR}Sébastien Blanchard
+Incroyable trouvaille lors des ventes privées ! Ce foulard Lumière Vivante ajoute une touche d'éclat unique à toutes mes tenues.${SEPARATOR}Margaux Beaumont`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }],
+                        generationConfig: { temperature: 0.75, maxOutputTokens: 500 },
+                        safetySettings: [
+                          { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                          { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                          { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+                          { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" }
+                        ]
+                    }),
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('API Error Response:', errorData);
+                    throw new Error(`Erreur API ${response.status}: ${errorData?.error?.message || 'Détail indisponible'}`);
+                }
+
+                const data = await response.json();
+
+                 if (data.promptFeedback && data.promptFeedback.blockReason) {
+                   console.error('API blocked:', data.promptFeedback.blockReason, data.promptFeedback.safetyRatings);
+                   throw new Error(`Contenu bloqué par l'API: ${data.promptFeedback.blockReason}`);
+                }
+
+                if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
+                    const text = data.candidates[0].content.parts[0].text;
+                    const lines = text.split('\n').map(l => l.trim()).filter(l => l.includes(SEPARATOR));
+
+                    const reviews = lines.map(line => {
+                        const parts = line.split(SEPARATOR);
+                        if (parts.length === 2 && parts[0].trim().length > 10 && parts[1].trim().length > 3) {
+                            return { review: parts[0].trim(), reviewer: parts[1].trim() };
+                        }
+                        return null;
+                    }).filter(item => item !== null);
+
+                    if (reviews.length < 1) {
+                         console.warn("Received fewer valid review pairs than expected:", reviews);
+                         throw new Error("Format de réponse API inattendu.");
+                    }
+                    isFetching = false;
+                    return reviews;
+
+                } else {
+                    console.error('Unexpected API response structure:', data);
+                    throw new Error("Structure de réponse API invalide.");
+                }
+            } catch (error) {
+                console.error('Failed to fetch reviews:', error);
+                showStatus(`Erreur chargement: ${error.message}`, true);
+                isFetching = false;
+                return null;
             }
-          }
-        });
-      }
-      
-      // Enhanced fullpage initialization
-      function initFullpage() {
-        fullpageInstance = new fullpage('#fullpage', {
-          anchors: ['accueil', 'produits', 'comparaisons', 'promotion', 'contact'],
-          menu: '#scroll-indicator',
-          navigation: false,
-          scrollingSpeed: 1000,
-          easing: 'easeInOutCubic',
-          verticalCentered: true,
-          responsiveWidth: 0,
-          afterLoad: function(origin, destination) {
-            const progress = (destination.index / (document.querySelectorAll('.section').length - 1)) * 100;
-            gsap.to(progressBar, {
-              width: `${progress}%`,
-              duration: 0.5,
-              ease: "power2.inOut"
-            });
-            updateSectionStatus(destination.index);
-            scrollDots.forEach((dot, index) => {
-              dot.classList.toggle('active', index === destination.index);
-            });
-          },
-          onLeave: function(origin, destination) {
-            triggerAnimations(destination.anchor);
-          }
-        });
-      }
-      
-      // Header change on scroll
-      function updateHeaderOnScroll() {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 50) {
-            header.classList.add('header-scrolled');
-          } else {
-            header.classList.remove('header-scrolled');
-          }
-        });
-      }
-      
-      // Trigger animations for current section
-      function triggerAnimations(sectionAnchor) {
-        const fadeElements = document.querySelectorAll(`.section[data-anchor="${sectionAnchor}"] .fade-in`);
-        const slideRightElements = document.querySelectorAll(`.section[data-anchor="${sectionAnchor}"] .slide-in-right`);
-        const slideLeftElements = document.querySelectorAll(`.section[data-anchor="${sectionAnchor}"] .slide-in-left`);
-        const scaleElements = document.querySelectorAll(`.section[data-anchor="${sectionAnchor}"] .scale-in`);
-        
-        gsap.to(fadeElements, {
-          opacity: 1,
-          y: 0,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-        
-        gsap.to(slideRightElements, {
-          opacity: 1,
-          x: 0,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-        
-        gsap.to(slideLeftElements, {
-          opacity: 1,
-          x: 0,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "power2.out"
-        });
-        
-        gsap.to(scaleElements, {
-          opacity: 1,
-          scale: 1,
-          stagger: 0.1,
-          duration: 0.8,
-          ease: "back.out(1.7)"
-        });
-      }
-      
-      // Enhanced event listeners
-      function initEventListeners() {
-        menuToggle.addEventListener('click', () => {
-          document.body.classList.toggle('menu-open');
-        });
-        
-        document.querySelectorAll('.nav-link').forEach(link => {
-          link.addEventListener('click', () => {
-            document.body.classList.remove('menu-open');
-          });
-        });
-        
-        scrollDots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            fullpageInstance.moveTo(index + 1);
-          });
-        });
-        
-        // Window resize handler for responsive rebuilding
-        window.addEventListener('resize', () => {
-          if (fullpageInstance) {
-            fullpageInstance.reBuild();
-          }
-        });
-      }
-      
-      // Update section animation status
-      function updateSectionStatus(activeIndex) {
-        document.querySelectorAll('.section').forEach((section, index) => {
-          if (index === activeIndex) {
-            triggerAnimations(section.getAttribute('data-anchor'));
-          }
-        });
-      }
-      
-      // Initialize GSAP animations
-      function initAnimations() {
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Initialize first section animations
-        triggerAnimations('accueil');
-        
-        // Product card hover animations with GSAP
-        document.querySelectorAll('.product-card').forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-              y: -15,
-              boxShadow: '0 20px 40px rgba(0,0,0,0.5), 0 0 20px rgba(212,175,55,0.2)',
-              borderColor: 'var(--gold)',
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-            
-            gsap.to(card.querySelector('.product-image'), {
-              scale: 1.1,
-              duration: 0.7,
-              ease: 'power2.out'
-            });
-            
-            gsap.to(card.querySelector('.product-tag'), {
-              backgroundColor: 'var(--gold)',
-              color: 'var(--black)',
-              y: -5,
-              duration: 0.3
-            });
-          });
-          
-          card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-              y: 0,
-              boxShadow: '0 5px 30px rgba(0, 0, 0, 0.3)',
-              borderColor: 'rgba(255, 255, 255, 0.05)',
-              duration: 0.3,
-              ease: 'power2.out'
-            });
-            
-            gsap.to(card.querySelector('.product-image'), {
-              scale: 1,
-              duration: 0.7,
-              ease: 'power2.out'
-            });
-            
-            gsap.to(card.querySelector('.product-tag'), {
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
-              color: 'var(--white)',
-              y: 0,
-              duration: 0.3
-            });
-          });
-        });
-        
-        // Comparison items hover animations
-        document.querySelectorAll('.comparison-item').forEach(item => {
-          item.addEventListener('mouseenter', () => {
-            gsap.to(item, {
-              x: 10,
-              background: 'rgba(212, 175, 55, 0.15)',
-              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.2), 0 0 15px rgba(212, 175, 55, 0.1)',
-              duration: 0.3
-            });
-          });
-          
-          item.addEventListener('mouseleave', () => {
-            gsap.to(item, {
-              x: 0,
-              background: 'rgba(212, 175, 55, 0.1)',
-              boxShadow: '0 5px 20px rgba(0, 0, 0, 0.1)',
-              duration: 0.3
-            });
-          });
-        });
-        
-        // Promo badge animation
-        gsap.to('.promo-badge', {
-          y: -10,
-          rotation: '15deg',
-          duration: 2,
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true
-        });
-        
-        // Animate the progress bar on scroll
-        window.addEventListener('scroll', () => {
-          const windowHeight = window.innerHeight;
-          const fullHeight = document.body.clientHeight;
-          const scrolled = window.scrollY;
-          const progress = (scrolled / (fullHeight - windowHeight)) * 100;
-          
-          gsap.to(progressBar, {
-            width: `${progress}%`,
-            duration: 0.3,
-            ease: "none"
-          });
-        });
-      }
-      
-      // Initialize everything
-      function init() {
-        initLoader();
-        initCursor();
-        initFullpage();
-        initSwiper();
-        initEventListeners();
-        updateHeaderOnScroll();
-      }
-      
-      init();
-    });
-  </script>
+        }
+
+        function animateAndDisplay(reviewObject) {
+             const tl = gsap.timeline();
+
+             tl.to(elementsToAnimate, {
+                    duration: 0.8,
+                    opacity: 0,
+                    y: -15,
+                    scale: 0.97,
+                    filter: 'blur(2.5px)',
+                    ease: "power2.in",
+                    stagger: 0.06
+                })
+               .call(() => {
+                    reviewRatingElement.textContent = STAR_RATING;
+                    reviewTextElement.textContent = `“${reviewObject.review}”`;
+                    reviewerNameElement.textContent = `— ${reviewObject.reviewer}`; // Using em dash
+               }, null, "-=0.2") // Update text slightly earlier
+               .set(elementsToAnimate, { y: 15, scale: 1.03, filter: 'blur(2.5px)' }) // Initial state for fade-in
+               .to(elementsToAnimate, {
+                    duration: 1.1,
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    filter: 'blur(0px)',
+                    ease: "power3.out",
+                    stagger: 0.12
+               });
+        }
+
+        async function showNextReview() {
+             if (isFetching) return;
+
+             if (currentBatchIndex >= localReviewsBatch.length) {
+                 const newBatch = await fetchNewReviewsBatch();
+                 if (newBatch && newBatch.length > 0) {
+                     localReviewsBatch = newBatch;
+                     currentBatchIndex = 0;
+                     hideStatus(); // Hide status if fetch was successful
+                 } else {
+                     if (!isFetching) { // Only update status if not already fetching
+                        if (!statusMessageElement.classList.contains('error')) {
+                            showStatus("Impossible de charger de nouveaux avis.", true);
+                        }
+                     }
+                     if(intervalId) clearInterval(intervalId);
+                     intervalId = null;
+                     return; // Stop if fetching failed
+                 }
+             }
+
+             if (localReviewsBatch.length > 0 && currentBatchIndex < localReviewsBatch.length) {
+                const reviewObj = localReviewsBatch[currentBatchIndex];
+                animateAndDisplay(reviewObj);
+                currentBatchIndex++;
+             } else if (!isFetching) {
+                 showStatus("Aucun avis à afficher pour le moment.", true);
+                 if(intervalId) clearInterval(intervalId);
+                 intervalId = null;
+             }
+        }
+
+       async function initialize() {
+            showStatus("Chargement des avis...");
+            await showNextReview();
+
+            if (!isFetching && localReviewsBatch.length > 0 && !statusMessageElement.classList.contains('error')) {
+                 if(intervalId) clearInterval(intervalId);
+                intervalId = setInterval(showNextReview, REVIEW_INTERVAL_MS);
+            } else {
+                 if(intervalId) clearInterval(intervalId);
+                 intervalId = null;
+            }
+        }
+
+        initialize();
+
+    </script>
+
 </body>
 </html>
