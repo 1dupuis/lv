@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumière Vivante - Avis Clients</title>
+    <title>Lumière Vivante - Avis Clients Élogieux</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0_300;0_400;0_600;1_300&display=swap" rel="stylesheet">
     <style>
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
@@ -25,10 +25,10 @@
         }
 
         body {
-            background: linear-gradient(-45deg, #020208, #080510, #000000, #100515);
+            background: linear-gradient(-45deg, #020207, #080610, #000000, #0f0514);
             background-size: 400% 400%;
-            animation: gradientBG 45s ease infinite;
-            color: #e8e8e8;
+            animation: gradientBG 35s ease infinite;
+            color: #f0f0f0;
             font-family: 'Poppins', sans-serif;
             display: flex;
             flex-direction: column;
@@ -37,26 +37,28 @@
             min-height: 100vh;
             text-align: center;
             overflow: hidden;
-            padding: 2rem 1rem;
+            padding: 1.5rem 1rem;
         }
 
         .review-container {
             max-width: 90%;
-            width: 750px;
-            padding: 2.8rem 1.8rem;
-            background: rgba(12, 12, 22, 0.65);
-            backdrop-filter: blur(12px);
-            border-radius: 18px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0px rgba(255, 255, 255, 0.03);
-            border: 1px solid;
-            border-image-source: linear-gradient(to bottom right, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            width: 780px;
+            padding: 3.2rem 2.2rem; /* Fine-tuned padding */
+            background: rgba(16, 16, 26, 0.75);
+            backdrop-filter: blur(16px);
+            border-radius: 22px; /* Slightly larger radius */
+            box-shadow: 0 14px 50px rgba(0, 0, 0, 0.45),
+                        inset 0 1px 2px rgba(0, 0, 0, 0.1), /* Subtle inner top shadow */
+                        inset 0 -1px 1px rgba(255, 255, 255, 0.02); /* Subtle inner bottom highlight */
+            border: 0px solid;
+            border-image-source: linear-gradient(140deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
             border-image-slice: 1;
-            margin-bottom: 90px;
+            margin-bottom: 100px;
             position: relative;
         }
 
         .review-content {
-            min-height: 190px;
+            min-height: 210px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -65,90 +67,97 @@
         }
 
         .review-rating {
-             font-size: 1.35rem;
-             color: #EACD84; /* Softer gold */
-             margin-bottom: 1.2rem;
+             font-size: 1.45rem;
+             color: #F0C040; /* Clearer gold */
+             margin-bottom: 1.4rem;
              opacity: 0;
-             transform: translateY(10px);
+             transform: translateY(15px);
              will-change: opacity, transform;
-             letter-spacing: 3px;
+             letter-spacing: 4px;
+             text-shadow: 0 0 10px rgba(240, 192, 64, 0.25); /* Refined glow */
         }
 
         .review-text {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-size: clamp(1.2rem, 2.7vw, 1.7rem);
             font-weight: 400;
-            line-height: 1.75;
-            color: #F0F0F0; /* Slightly off-white */
-            margin-bottom: 1.5rem;
+            line-height: 1.85;
+            color: #FCFCFC; /* Bright clean white */
+            margin-bottom: 1.7rem;
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(15px);
             will-change: opacity, transform, filter;
             font-style: italic;
+            max-width: 96%;
         }
 
         .reviewer-name {
-            font-size: clamp(0.9rem, 2vw, 1.05rem);
+            font-size: clamp(0.9rem, 1.7vw, 1.0rem);
             font-weight: 300;
-            color: #B0B0D0; /* Slightly softer author color */
+            color: #C0C0E0; /* Slightly more contrast */
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(15px);
             will-change: opacity, transform, filter;
-            font-style: normal; /* Keep name non-italic maybe */
+            font-style: normal;
+            margin-top: 0.3rem; /* Reduced space */
         }
 
         .status-message {
-            font-size: 1.1rem;
+            font-size: 1.05rem; /* Slightly smaller */
             font-weight: 300;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #888899;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            color: #A0A0B0; /* Neutral status color */
+            opacity: 0; /* Start hidden */
+            transition: color 0.3s ease; /* Transition color changes */
             width: 85%;
+            pointer-events: none;
+            visibility: hidden; /* Use visibility to prevent layout shifts */
         }
 
         .status-message.visible {
-             opacity: 1;
+             visibility: visible; /* Make visible */
         }
 
         .status-message.error {
-             color: #ff8888;
+             color: #ff9a9a; /* Brighter, clearer error red */
              font-weight: 400;
         }
 
         .presentation-button {
             position: fixed;
-            bottom: 30px;
+            bottom: 35px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
             display: inline-block;
-            padding: 13px 30px;
-            background-color: #CFAE4E; /* Refined gold */
-            color: #15151a; /* Darker text */
+            padding: 14px 34px;
+            background-image: linear-gradient(to bottom, #DABF60, #CFAE4E); /* Gradient background */
+            color: #101013; /* Darker text */
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 500;
             text-decoration: none;
-            border: none;
-            border-radius: 8px; /* Slightly more rounded */
+            border: none; /* Remove default border */
+            border-top: 1px solid rgba(255, 255, 255, 0.15); /* Subtle top highlight */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle bottom shadow */
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.35s ease;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+            transition: transform 0.25s ease, box-shadow 0.35s ease, background-image 0.3s ease;
+            box-shadow: 0 7px 22px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.05) inset; /* Enhanced shadow */
         }
 
         .presentation-button:hover {
-            background-color: #DABF60; /* Lighter gold on hover */
-            transform: translateX(-50%) translateY(-3px); /* Slightly more lift */
-            box-shadow: 0 8px 25px rgba(207, 174, 78, 0.4); /* Gold glow */
+            background-image: linear-gradient(to bottom, #E0C870, #DABF60); /* Lighter gradient */
+            transform: translateX(-50%) translateY(-4px);
+            box-shadow: 0 11px 30px rgba(218, 191, 96, 0.4), 0 1px 1px rgba(255, 255, 255, 0.08) inset; /* Brighter glow */
         }
 
          .presentation-button:active {
-             transform: translateX(-50%) translateY(0px);
-             background-color: #B89B3A; /* Darker gold */
-             box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+             transform: translateX(-50%) translateY(-1px);
+             background-image: linear-gradient(to top, #DABF60, #CFAE4E); /* Invert gradient slightly */
+             box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1) inset; /* Pressed shadow */
          }
 
     </style>
@@ -168,15 +177,16 @@
         Découvrir la Présentation
     </a>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 
     <script>
-        const apiKey = "AIzaSyAtIJNuqJsnifU3Ez3CNEtjUrhQWbB1N7o"; // WARNING: Exposed API Key
+        const apiKey = "AIzaSyAtIJNuqJsnifU3Ez3CNEtjUrhQWbB1N7o"; // PRODUCTION WARNING: Secure this key!
         const modelName = "gemini-2.0-flash-lite";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
-        const REVIEW_INTERVAL_MS = 2500; // Slightly longer interval
+        const REVIEW_INTERVAL_MS = 2500;
         const SEPARATOR = ' :: ';
         const STAR_RATING = '★★★★★';
+        const BATCH_SIZE = 5;
 
         const reviewRatingElement = document.getElementById('review-rating');
         const reviewTextElement = document.getElementById('review-text');
@@ -185,45 +195,36 @@
         const elementsToAnimate = [reviewRatingElement, reviewTextElement, reviewerNameElement];
 
         let localReviewsBatch = [];
+        let nextReviewsBatch = null;
         let currentBatchIndex = 0;
         let isFetching = false;
         let intervalId = null;
 
         console.warn("DEMO ONLY: API Key is exposed directly in the frontend code. Do not use this method in production.");
 
-        function showStatus(message, isError = false) {
+        function setStatus(message, isError = false) {
             statusMessageElement.textContent = message;
-            statusMessageElement.classList.add('visible');
             statusMessageElement.classList.toggle('error', isError);
-            gsap.to(elementsToAnimate, { opacity: 0, duration: 0.4 });
+            statusMessageElement.classList.add('visible');
+            gsap.to(statusMessageElement, { opacity: 1, duration: 0.4 });
         }
 
         function hideStatus() {
-             statusMessageElement.classList.remove('visible');
+            gsap.to(statusMessageElement, { opacity: 0, duration: 0.4, onComplete: () => {
+                statusMessageElement.classList.remove('visible', 'error');
+                statusMessageElement.textContent = '';
+            }});
         }
 
-        async function fetchNewReviewsBatch() {
-            if (isFetching) return null;
-            isFetching = true;
-            showStatus("Recherche d'avis clients...");
+        async function fetchNewReviewsBatchInternal() {
+             const prompt = `Génère exactement ${BATCH_SIZE} paires uniques 'avis client :: nom client'. Chaque avis doit être une critique client détaillée et enthousiaste pour la marque de luxe 'Lumière Vivante', exprimant une profonde satisfaction et un sentiment de luxe authentique. L'avis DOIT : 1. Mentionner la qualité exceptionnelle perçue (matière somptueuse, finitions parfaites, tombé impeccable, design unique/intemporel). 2. Décrire le sentiment procuré (se sentir spécial(e), confiant(e), rayonnant(e), élégant(e) sans effort, version améliorée de soi-même). 3. Faire allusion à un type d'article ou catégorie (mon nouveau manteau cachemire, cette robe soirée fluide, un accessoire signature, le chemisier soie aérien, ce tailleur structuré) sans nom spécifique. 4. Optionnellement, mentionner un contexte positif (idéal pour X, cadeau marquant, service boutique remarquable, investissement mode quotidien). 5. Utiliser un ton chic, personnel, sincère. Éviter superlatifs vides. Longueur: 2-4 phrases courtes. Chaque nom client = nom fictif, consonance française élégante (prénom nom). Utilise '${SEPARATOR}' comme séparateur exact. Pas de guillemets autour de l'avis. Une paire par ligne.
 
-            const prompt = `Génère exactement 5 paires uniques 'avis client :: nom client'.
-Chaque avis doit ressembler à une critique client courte et très positive (review) pour la marque de mode de luxe 'Lumière Vivante'. Il doit exprimer l'enthousiasme et la satisfaction.
-L'avis doit mentionner ou suggérer :
-- La qualité exceptionnelle des articles (ex: tissu incroyable, coupe parfaite, matière divine).
-- Le sentiment procuré (ex: confiance, élégance, éclat, unique, magnifique).
-- Parfois, faire allusion à une bonne affaire, une collection spéciale, ou un service client excellent (ex: "trouvé lors des ventes privées", "pièce maîtresse de la nouvelle collection", "conseils personnalisés au top", "un classique intemporel").
-- Utiliser un ton élogieux, chic et personnel.
-Chaque nom client doit être un nom de personne fictif, à consonance française et élégante (prénom et nom).
-Utilise '${SEPARATOR}' comme séparateur exact entre l'avis et le nom.
-Ne mets pas de guillemets autour de l'avis. Une paire par ligne.
-
-Exemple de format :
-Absolument sublime ! La robe en soie Lumière Vivante est d'une fluidité incroyable, je me sens magnifique.${SEPARATOR}Aurélie Dubois
-Ce manteau en cachemire est un rêve. Qualité irréprochable et coupe divine. Trouvé grâce aux conseils personnalisés !${SEPARATOR}Jean-Philippe Moreau
-J'ai craqué pour un chemisier de la nouvelle collection Lumière Vivante... Il illumine mon teint, que des compliments ! Vaut chaque euro.${SEPARATOR}Élodie Lemaître
-Le tailleur pantalon est d'une coupe parfaite. Je me sens puissante et chic. Un investissement mode intemporel que je ne regrette pas.${SEPARATOR}Sébastien Blanchard
-Incroyable trouvaille lors des ventes privées ! Ce foulard Lumière Vivante ajoute une touche d'éclat unique à toutes mes tenues.${SEPARATOR}Margaux Beaumont`;
+Exemple format :
+Ce nouveau manteau Lumière Vivante est une pure merveille. La laine est d'une douceur incroyable et la coupe me donne une allure folle, je me sens si élégante !${SEPARATOR}Isabelle Renaud
+J'ai reçu cette étole en cachemire en cadeau... Quelle délicatesse ! Elle rehausse la moindre tenue et me fait sentir spéciale à chaque fois que je la porte.${SEPARATOR}Antoine Chevalier
+Enfin trouvé le tailleur parfait ! Le tissu est sublime, le tombé impeccable. Un investissement qui me donne une confiance incroyable pour mes rendez-vous importants.${SEPARATOR}Chloé Dubois
+Cette robe de cocktail Lumière Vivante était la star de la soirée. Les finitions sont exquises, je n'ai eu que des compliments et je me sentais absolument rayonnante.${SEPARATOR}Maxime Lefebvre
+Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemisier en soie unique. La matière est divine sur la peau, je suis conquise par la marque.${SEPARATOR}Léa Martin`;
 
             try {
                 const response = await fetch(apiUrl, {
@@ -231,7 +232,7 @@ Incroyable trouvaille lors des ventes privées ! Ce foulard Lumière Vivante ajo
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: [{ parts: [{ text: prompt }] }],
-                        generationConfig: { temperature: 0.75, maxOutputTokens: 500 },
+                        generationConfig: { temperature: 0.8, maxOutputTokens: 600 },
                         safetySettings: [
                           { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
                           { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
@@ -243,123 +244,156 @@ Incroyable trouvaille lors des ventes privées ! Ce foulard Lumière Vivante ajo
 
                 if (!response.ok) {
                     const errorData = await response.json();
-                    console.error('API Error Response:', errorData);
-                    throw new Error(`Erreur API ${response.status}: ${errorData?.error?.message || 'Détail indisponible'}`);
+                    console.error('API Error:', errorData);
+                    throw new Error(`API ${response.status}: ${errorData?.error?.message || 'Unknown Error'}`);
                 }
-
                 const data = await response.json();
 
-                 if (data.promptFeedback && data.promptFeedback.blockReason) {
-                   console.error('API blocked:', data.promptFeedback.blockReason, data.promptFeedback.safetyRatings);
-                   throw new Error(`Contenu bloqué par l'API: ${data.promptFeedback.blockReason}`);
+                if (data.promptFeedback?.blockReason) {
+                   console.error('API blocked:', data.promptFeedback);
+                   throw new Error(`Blocked by API: ${data.promptFeedback.blockReason}`);
                 }
 
                 if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
                     const text = data.candidates[0].content.parts[0].text;
                     const lines = text.split('\n').map(l => l.trim()).filter(l => l.includes(SEPARATOR));
-
                     const reviews = lines.map(line => {
                         const parts = line.split(SEPARATOR);
-                        if (parts.length === 2 && parts[0].trim().length > 10 && parts[1].trim().length > 3) {
+                        if (parts.length === 2 && parts[0].trim().length > 15 && parts[1].trim().length > 3) {
                             return { review: parts[0].trim(), reviewer: parts[1].trim() };
-                        }
-                        return null;
+                        } return null;
                     }).filter(item => item !== null);
 
-                    if (reviews.length < 1) {
-                         console.warn("Received fewer valid review pairs than expected:", reviews);
-                         throw new Error("Format de réponse API inattendu.");
-                    }
-                    isFetching = false;
+                    if (reviews.length === 0) throw new Error("No valid reviews parsed from API response.");
+                    if (reviews.length < BATCH_SIZE) console.warn(`Received ${reviews.length}/${BATCH_SIZE} reviews.`);
                     return reviews;
-
                 } else {
-                    console.error('Unexpected API response structure:', data);
-                    throw new Error("Structure de réponse API invalide.");
+                    console.error('Invalid API structure:', data);
+                    throw new Error("Invalid API response structure.");
                 }
             } catch (error) {
-                console.error('Failed to fetch reviews:', error);
-                showStatus(`Erreur chargement: ${error.message}`, true);
-                isFetching = false;
-                return null;
+                console.error('Fetch failed:', error);
+                throw error; // Re-throw to be caught by caller
             }
         }
 
         function animateAndDisplay(reviewObject) {
-             const tl = gsap.timeline();
+            const tl = gsap.timeline();
+            const fadeOutDuration = 0.45;
+            const fadeInDuration = 0.8;
 
-             tl.to(elementsToAnimate, {
-                    duration: 0.8,
-                    opacity: 0,
-                    y: -15,
-                    scale: 0.97,
-                    filter: 'blur(2.5px)',
-                    ease: "power2.in",
-                    stagger: 0.06
-                })
-               .call(() => {
-                    reviewRatingElement.textContent = STAR_RATING;
-                    reviewTextElement.textContent = `“${reviewObject.review}”`;
-                    reviewerNameElement.textContent = `— ${reviewObject.reviewer}`; // Using em dash
-               }, null, "-=0.2") // Update text slightly earlier
-               .set(elementsToAnimate, { y: 15, scale: 1.03, filter: 'blur(2.5px)' }) // Initial state for fade-in
-               .to(elementsToAnimate, {
-                    duration: 1.1,
-                    opacity: 1,
-                    y: 0,
-                    scale: 1,
-                    filter: 'blur(0px)',
-                    ease: "power3.out",
-                    stagger: 0.12
-               });
+            tl.to(elementsToAnimate, {
+                   duration: fadeOutDuration,
+                   opacity: 0,
+                   y: -20, // Slightly more movement
+                   scale: 0.95,
+                   filter: 'blur(2px)', // Less blur
+                   ease: "power2.in",
+                   stagger: 0.04
+               })
+              .call(() => {
+                   reviewRatingElement.textContent = STAR_RATING;
+                   reviewTextElement.textContent = `“${reviewObject.review}”`;
+                   reviewerNameElement.textContent = `— ${reviewObject.reviewer}`;
+              }, null, `-=${fadeOutDuration * 0.3}`)
+              .set(elementsToAnimate, { y: 20, scale: 1.05, filter: 'blur(2px)' })
+              .to(elementsToAnimate, {
+                   duration: fadeInDuration,
+                   opacity: 1,
+                   y: 0,
+                   scale: 1,
+                   filter: 'blur(0px)',
+                   ease: "expo.out", // Smoother ease out
+                   stagger: 0.07
+              });
         }
 
         async function showNextReview() {
-             if (isFetching) return;
+            if (currentBatchIndex >= localReviewsBatch.length) {
+                if (nextReviewsBatch?.length > 0) {
+                    localReviewsBatch = nextReviewsBatch;
+                    nextReviewsBatch = null;
+                    currentBatchIndex = 0;
+                } else if (isFetching) {
+                    return;
+                } else {
+                    setStatus("Rechargement des avis...");
+                    isFetching = true;
+                    try {
+                        const batch = await fetchNewReviewsBatchInternal();
+                        if (batch?.length > 0) {
+                            localReviewsBatch = batch;
+                            currentBatchIndex = 0;
+                            hideStatus();
+                        } else { throw new Error("Received empty batch on recovery."); }
+                    } catch (error) {
+                        setStatus(`Erreur: ${error.message}`, true);
+                        if (intervalId) clearInterval(intervalId);
+                        intervalId = null;
+                        isFetching = false;
+                        return;
+                    } finally {
+                         isFetching = false;
+                    }
+                }
+            }
 
-             if (currentBatchIndex >= localReviewsBatch.length) {
-                 const newBatch = await fetchNewReviewsBatch();
-                 if (newBatch && newBatch.length > 0) {
-                     localReviewsBatch = newBatch;
-                     currentBatchIndex = 0;
-                     hideStatus(); // Hide status if fetch was successful
-                 } else {
-                     if (!isFetching) { // Only update status if not already fetching
-                        if (!statusMessageElement.classList.contains('error')) {
-                            showStatus("Impossible de charger de nouveaux avis.", true);
-                        }
-                     }
-                     if(intervalId) clearInterval(intervalId);
-                     intervalId = null;
-                     return; // Stop if fetching failed
-                 }
-             }
-
-             if (localReviewsBatch.length > 0 && currentBatchIndex < localReviewsBatch.length) {
+            if (localReviewsBatch.length > 0 && currentBatchIndex < localReviewsBatch.length) {
+                // Ensure any previous status (like loading) is hidden before showing content
+                 if (statusMessageElement.classList.contains('visible') && !statusMessageElement.classList.contains('error')) {
+                    hideStatus();
+                }
                 const reviewObj = localReviewsBatch[currentBatchIndex];
                 animateAndDisplay(reviewObj);
+
+                const prefetchIndex = Math.max(0, localReviewsBatch.length - 2); // Prefetch on second to last
+                if (currentBatchIndex === prefetchIndex && nextReviewsBatch === null && !isFetching) {
+                     isFetching = true;
+                     fetchNewReviewsBatchInternal().then(batch => {
+                         if (batch?.length > 0) {
+                             nextReviewsBatch = batch;
+                         } else { nextReviewsBatch = null; }
+                     }).catch(error => {
+                        console.error("Prefetch failed:", error);
+                        nextReviewsBatch = null;
+                     }).finally(() => {
+                        isFetching = false;
+                     });
+                }
                 currentBatchIndex++;
-             } else if (!isFetching) {
-                 showStatus("Aucun avis à afficher pour le moment.", true);
-                 if(intervalId) clearInterval(intervalId);
-                 intervalId = null;
-             }
-        }
-
-       async function initialize() {
-            showStatus("Chargement des avis...");
-            await showNextReview();
-
-            if (!isFetching && localReviewsBatch.length > 0 && !statusMessageElement.classList.contains('error')) {
-                 if(intervalId) clearInterval(intervalId);
-                intervalId = setInterval(showNextReview, REVIEW_INTERVAL_MS);
-            } else {
-                 if(intervalId) clearInterval(intervalId);
-                 intervalId = null;
             }
         }
 
-        initialize();
+        async function initialize() {
+            setStatus("Chargement des premiers avis...");
+            isFetching = true;
+            try {
+                const initialBatch = await fetchNewReviewsBatchInternal();
+                if (initialBatch?.length > 0) {
+                    localReviewsBatch = initialBatch;
+                    currentBatchIndex = 0;
+                    // IMPORTANT: Hide status *before* the first animation starts
+                    hideStatus();
+                    // Need a slight delay for hideStatus animation before starting the first review display
+                    setTimeout(() => {
+                         showNextReview();
+                         if (intervalId) clearInterval(intervalId);
+                         intervalId = setInterval(showNextReview, REVIEW_INTERVAL_MS);
+                    }, 450); // Match hideStatus duration + buffer
+
+                } else {
+                    throw new Error("Initial fetch returned no reviews.");
+                }
+            } catch (error) {
+                setStatus(`Erreur initiale: ${error.message}`, true);
+                if (intervalId) clearInterval(intervalId);
+                intervalId = null;
+            } finally {
+                isFetching = false;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initialize);
 
     </script>
 
