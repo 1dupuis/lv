@@ -3,15 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumière Vivante - Avis Clients Élogieux</title>
+    <title>Lumière Vivante - Reflets d'Élégance</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0_300;0_400;0_600;1_300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <style>
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+
+        @keyframes floatAnimation {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes subtleRotate {
+            0% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+            100% { transform: rotate(-1deg); }
+        }
+
+        @keyframes shimmer {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.3; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         * {
@@ -25,7 +48,7 @@
         }
 
         body {
-            background: linear-gradient(-45deg, #020207, #080610, #000000, #0f0514);
+            background: linear-gradient(-45deg, #020207, #0e0818, #000000, #100418);
             background-size: 400% 400%;
             animation: gradientBG 35s ease infinite;
             color: #f0f0f0;
@@ -36,29 +59,78 @@
             align-items: center;
             min-height: 100vh;
             text-align: center;
-            overflow: hidden;
-            padding: 1.5rem 1rem;
+            overflow-x: hidden;
+            padding: 2rem 1rem;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            font-size: 1.4rem;
+            letter-spacing: 1.5px;
+            color: #e0c982;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.5s;
         }
 
         .review-container {
             max-width: 90%;
             width: 780px;
-            padding: 3.2rem 2.2rem; /* Fine-tuned padding */
-            background: rgba(16, 16, 26, 0.75);
-            backdrop-filter: blur(16px);
-            border-radius: 22px; /* Slightly larger radius */
-            box-shadow: 0 14px 50px rgba(0, 0, 0, 0.45),
-                        inset 0 1px 2px rgba(0, 0, 0, 0.1), /* Subtle inner top shadow */
-                        inset 0 -1px 1px rgba(255, 255, 255, 0.02); /* Subtle inner bottom highlight */
-            border: 0px solid;
-            border-image-source: linear-gradient(140deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
-            border-image-slice: 1;
-            margin-bottom: 100px;
+            padding: 4rem 2.5rem;
+            background: rgba(16, 16, 26, 0.65);
+            backdrop-filter: blur(18px);
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5),
+                        inset 0 1px 2px rgba(255, 255, 255, 0.05),
+                        inset 0 -1px 1px rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 120px;
             position: relative;
+            animation: floatAnimation 8s ease-in-out infinite;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .review-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6),
+                        inset 0 1px 2px rgba(255, 255, 255, 0.08),
+                        inset 0 -1px 1px rgba(255, 255, 255, 0.04);
+        }
+
+        .light-accent {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(224, 201, 130, 0.15) 0%, rgba(224, 201, 130, 0) 70%);
+            animation: shimmer 8s infinite ease-in-out;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .light-accent:nth-of-type(1) {
+            top: -50px;
+            right: -30px;
+        }
+
+        .light-accent:nth-of-type(2) {
+            bottom: -60px;
+            left: -40px;
+            width: 180px;
+            height: 180px;
+            animation-delay: 2s;
         }
 
         .review-content {
-            min-height: 210px;
+            min-height: 240px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -67,126 +139,224 @@
         }
 
         .review-rating {
-             font-size: 1.45rem;
-             color: #F0C040; /* Clearer gold */
-             margin-bottom: 1.4rem;
-             opacity: 0;
-             transform: translateY(15px);
-             will-change: opacity, transform;
-             letter-spacing: 4px;
-             text-shadow: 0 0 10px rgba(240, 192, 64, 0.25); /* Refined glow */
+            font-size: 1.6rem;
+            color: #E0C982;
+            margin-bottom: 1.6rem;
+            opacity: 0;
+            transform: translateY(15px);
+            will-change: opacity, transform;
+            letter-spacing: 5px;
+            text-shadow: 0 0 12px rgba(224, 201, 130, 0.35);
+        }
+
+        .quotation-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            position: absolute;
+            color: rgba(255, 255, 255, 0.04);
+            z-index: -1;
+            line-height: 0;
+        }
+
+        .quotation-mark.left {
+            top: 50%;
+            left: -10px;
+            transform: translateY(-50%);
+        }
+
+        .quotation-mark.right {
+            bottom: 20px;
+            right: -10px;
         }
 
         .review-text {
-            font-size: clamp(1.2rem, 2.7vw, 1.7rem);
-            font-weight: 400;
+            font-size: clamp(1.2rem, 2.7vw, 1.65rem);
+            font-weight: 300;
             line-height: 1.85;
-            color: #FCFCFC; /* Bright clean white */
-            margin-bottom: 1.7rem;
+            color: #FFFFFF;
+            margin-bottom: 2rem;
             opacity: 0;
             transform: translateY(15px);
             will-change: opacity, transform, filter;
             font-style: italic;
             max-width: 96%;
+            font-family: 'Playfair Display', serif;
         }
 
         .reviewer-name {
-            font-size: clamp(0.9rem, 1.7vw, 1.0rem);
+            font-size: clamp(0.9rem, 1.7vw, 1.05rem);
             font-weight: 300;
-            color: #C0C0E0; /* Slightly more contrast */
+            color: #E0C982;
             opacity: 0;
             transform: translateY(15px);
             will-change: opacity, transform, filter;
             font-style: normal;
-            margin-top: 0.3rem; /* Reduced space */
+            margin-top: 0.3rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding-top: 16px;
+        }
+
+        .reviewer-name::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 1px;
+            background-color: rgba(224, 201, 130, 0.4);
         }
 
         .status-message {
-            font-size: 1.05rem; /* Slightly smaller */
+            font-size: 1.05rem;
             font-weight: 300;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #A0A0B0; /* Neutral status color */
-            opacity: 0; /* Start hidden */
-            transition: color 0.3s ease; /* Transition color changes */
+            color: #A0A0B0;
+            opacity: 0;
+            transition: color 0.3s ease;
             width: 85%;
             pointer-events: none;
-            visibility: hidden; /* Use visibility to prevent layout shifts */
+            visibility: hidden;
         }
 
         .status-message.visible {
-             visibility: visible; /* Make visible */
+            visibility: visible;
         }
 
         .status-message.error {
-             color: #ff9a9a; /* Brighter, clearer error red */
-             font-weight: 400;
+            color: #ff9a9a;
+            font-weight: 400;
         }
 
         .presentation-button {
             position: fixed;
-            bottom: 35px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 100;
             display: inline-block;
-            padding: 14px 34px;
-            background-image: linear-gradient(to bottom, #DABF60, #CFAE4E); /* Gradient background */
-            color: #101013; /* Darker text */
+            padding: 16px 38px;
+            background-image: linear-gradient(to bottom, #E0C982, #C9B06E);
+            color: #0a0a0e;
             font-family: 'Poppins', sans-serif;
             font-size: 1.05rem;
             font-weight: 500;
             text-decoration: none;
-            border: none; /* Remove default border */
-            border-top: 1px solid rgba(255, 255, 255, 0.15); /* Subtle top highlight */
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle bottom shadow */
-            border-radius: 10px;
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
             cursor: pointer;
             transition: transform 0.25s ease, box-shadow 0.35s ease, background-image 0.3s ease;
-            box-shadow: 0 7px 22px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.05) inset; /* Enhanced shadow */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 
+                        0 1px 1px rgba(255, 255, 255, 0.05) inset,
+                        0 0 40px rgba(224, 201, 130, 0.2);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 1s;
         }
 
         .presentation-button:hover {
-            background-image: linear-gradient(to bottom, #E0C870, #DABF60); /* Lighter gradient */
+            background-image: linear-gradient(to bottom, #E8D493, #D4BC7E);
             transform: translateX(-50%) translateY(-4px);
-            box-shadow: 0 11px 30px rgba(218, 191, 96, 0.4), 0 1px 1px rgba(255, 255, 255, 0.08) inset; /* Brighter glow */
+            box-shadow: 0 14px 35px rgba(224, 201, 130, 0.35), 
+                        0 1px 1px rgba(255, 255, 255, 0.08) inset,
+                        0 0 50px rgba(224, 201, 130, 0.3);
         }
 
-         .presentation-button:active {
-             transform: translateX(-50%) translateY(-1px);
-             background-image: linear-gradient(to top, #DABF60, #CFAE4E); /* Invert gradient slightly */
-             box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.1) inset; /* Pressed shadow */
-         }
+        .presentation-button:active {
+            transform: translateX(-50%) translateY(-1px);
+            background-image: linear-gradient(to top, #E0C982, #C9B06E);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25), 
+                        0 1px 2px rgba(0, 0, 0, 0.1) inset,
+                        0 0 30px rgba(224, 201, 130, 0.15);
+        }
 
+        .luxury-particles {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, rgba(224, 201, 130, 0.8) 0%, rgba(224, 201, 130, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .review-container {
+                padding: 3rem 1.8rem;
+                margin-bottom: 100px;
+            }
+            
+            .quotation-mark {
+                font-size: 4rem;
+            }
+            
+            .quotation-mark.left {
+                left: -5px;
+            }
+            
+            .quotation-mark.right {
+                right: -5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .review-container {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .quotation-mark {
+                display: none;
+            }
+            
+            .presentation-button {
+                padding: 14px 32px;
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="logo">Lumière Vivante</div>
 
     <div class="review-container">
+        <div class="light-accent"></div>
+        <div class="light-accent"></div>
         <div class="review-content">
+            <span class="quotation-mark left">"</span>
             <p class="review-rating" id="review-rating"></p>
             <p class="review-text" id="review-text"></p>
             <p class="reviewer-name" id="reviewer-name"></p>
+            <span class="quotation-mark right">"</span>
             <p class="status-message" id="status-message"></p>
         </div>
     </div>
 
     <a href="/presentation" class="presentation-button">
-        Découvrir la Présentation
+        Découvrir la Collection
     </a>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
     <script>
         const apiKey = "AIzaSyAtIJNuqJsnifU3Ez3CNEtjUrhQWbB1N7o"; // PRODUCTION WARNING: Secure this key!
         const modelName = "gemini-2.0-flash-lite";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
-        const REVIEW_INTERVAL_MS = 2500;
+        const REVIEW_INTERVAL_MS = 2500; // Longer display time for luxury experience
         const SEPARATOR = ' :: ';
-        const STAR_RATING = '★★★★★';
-        const BATCH_SIZE = 5;
+        const BATCH_SIZE = 8; // More reviews per batch
 
         const reviewRatingElement = document.getElementById('review-rating');
         const reviewTextElement = document.getElementById('review-text');
@@ -199,6 +369,7 @@
         let currentBatchIndex = 0;
         let isFetching = false;
         let intervalId = null;
+        let particlesInterval = null;
 
         console.warn("DEMO ONLY: API Key is exposed directly in the frontend code. Do not use this method in production.");
 
@@ -216,15 +387,28 @@
             }});
         }
 
-        async function fetchNewReviewsBatchInternal() {
-             const prompt = `Génère exactement ${BATCH_SIZE} paires uniques 'avis client :: nom client'. Chaque avis doit être une critique client détaillée et enthousiaste pour la marque de luxe 'Lumière Vivante', exprimant une profonde satisfaction et un sentiment de luxe authentique. L'avis DOIT : 1. Mentionner la qualité exceptionnelle perçue (matière somptueuse, finitions parfaites, tombé impeccable, design unique/intemporel). 2. Décrire le sentiment procuré (se sentir spécial(e), confiant(e), rayonnant(e), élégant(e) sans effort, version améliorée de soi-même). 3. Faire allusion à un type d'article ou catégorie (mon nouveau manteau cachemire, cette robe soirée fluide, un accessoire signature, le chemisier soie aérien, ce tailleur structuré) sans nom spécifique. 4. Optionnellement, mentionner un contexte positif (idéal pour X, cadeau marquant, service boutique remarquable, investissement mode quotidien). 5. Utiliser un ton chic, personnel, sincère. Éviter superlatifs vides. Longueur: 2-4 phrases courtes. Chaque nom client = nom fictif, consonance française élégante (prénom nom). Utilise '${SEPARATOR}' comme séparateur exact. Pas de guillemets autour de l'avis. Une paire par ligne.
+        function generateRandomRating() {
+            // Generate ratings between 4 and 5 stars
+            const stars = Math.random() < 0.7 ? 5 : 4; // 70% chance of 5 stars, 30% chance of 4 stars
+            return '★'.repeat(stars) + '☆'.repeat(5 - stars);
+        }
 
-Exemple format :
-Ce nouveau manteau Lumière Vivante est une pure merveille. La laine est d'une douceur incroyable et la coupe me donne une allure folle, je me sens si élégante !${SEPARATOR}Isabelle Renaud
-J'ai reçu cette étole en cachemire en cadeau... Quelle délicatesse ! Elle rehausse la moindre tenue et me fait sentir spéciale à chaque fois que je la porte.${SEPARATOR}Antoine Chevalier
-Enfin trouvé le tailleur parfait ! Le tissu est sublime, le tombé impeccable. Un investissement qui me donne une confiance incroyable pour mes rendez-vous importants.${SEPARATOR}Chloé Dubois
-Cette robe de cocktail Lumière Vivante était la star de la soirée. Les finitions sont exquises, je n'ai eu que des compliments et je me sentais absolument rayonnante.${SEPARATOR}Maxime Lefebvre
-Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemisier en soie unique. La matière est divine sur la peau, je suis conquise par la marque.${SEPARATOR}Léa Martin`;
+        async function fetchNewReviewsBatchInternal() {
+            const prompt = `Génère exactement ${BATCH_SIZE} paires uniques 'avis client :: nom client', exprimant une profonde satisfaction pour la marque de haute-couture 'Lumière Vivante'. 
+            
+            L'avis DOIT :
+            1. Mentionner l'artisanat d'exception (broderies faites main, soie d'exception, cachemire noble, matières organiques, tombé architectural, construction irréprochable, pièce unique) 
+            2. Exprimer une émotion authentique (sentiment d'appartenance, transformation personnelle, élévation du quotidien, redécouverte de sa propre élégance)
+            3. Mentionner une pièce ou collection (robe du soir, tailleur signature, cape d'hiver, ensemble fluide, accessoire brodé, pièce statement) sans nom commercial spécifique
+            4. Suggérer la rareté/exclusivité (investissement intemporel, attente justifiée, qualité incomparable, détails exceptionnels)
+            5. Utiliser un langage nuancé, élégant et subtil d'un vrai client sophistiqué
+            
+            Longueur: 2-3 phrases percutantes.
+            Nom client: prénom + nom à consonance française élégante.
+            Format: avis${SEPARATOR}prénom nom
+            Une paire par ligne. Pas de guillemets.
+            
+            ESSENTIEL: Varier considérablement le vocabulaire, la structure et les émotions entre chaque avis. Éviter tout cliché ou superlatif vide.`;
 
             try {
                 const response = await fetch(apiUrl, {
@@ -232,7 +416,7 @@ Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemis
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         contents: [{ parts: [{ text: prompt }] }],
-                        generationConfig: { temperature: 0.8, maxOutputTokens: 600 },
+                        generationConfig: { temperature: 0.9, maxOutputTokens: 1000 },
                         safetySettings: [
                           { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
                           { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
@@ -264,47 +448,47 @@ Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemis
                         } return null;
                     }).filter(item => item !== null);
 
-                    if (reviews.length === 0) throw new Error("No valid reviews parsed from API response.");
-                    if (reviews.length < BATCH_SIZE) console.warn(`Received ${reviews.length}/${BATCH_SIZE} reviews.`);
+                    if (reviews.length === 0) throw new Error("Aucun avis valide généré.");
+                    if (reviews.length < BATCH_SIZE) console.warn(`Reçu ${reviews.length}/${BATCH_SIZE} avis.`);
                     return reviews;
                 } else {
-                    console.error('Invalid API structure:', data);
-                    throw new Error("Invalid API response structure.");
+                    console.error('Structure API invalide:', data);
+                    throw new Error("Structure de réponse API invalide.");
                 }
             } catch (error) {
-                console.error('Fetch failed:', error);
-                throw error; // Re-throw to be caught by caller
+                console.error('Échec de récupération:', error);
+                throw error;
             }
         }
 
         function animateAndDisplay(reviewObject) {
             const tl = gsap.timeline();
-            const fadeOutDuration = 0.45;
-            const fadeInDuration = 0.8;
+            const fadeOutDuration = 0.8;
+            const fadeInDuration = 1.2;
 
             tl.to(elementsToAnimate, {
                    duration: fadeOutDuration,
                    opacity: 0,
-                   y: -20, // Slightly more movement
-                   scale: 0.95,
-                   filter: 'blur(2px)', // Less blur
-                   ease: "power2.in",
-                   stagger: 0.04
+                   y: -15,
+                   scale: 0.97,
+                   filter: 'blur(3px)',
+                   ease: "power2.inOut",
+                   stagger: 0.05
                })
               .call(() => {
-                   reviewRatingElement.textContent = STAR_RATING;
-                   reviewTextElement.textContent = `“${reviewObject.review}”`;
-                   reviewerNameElement.textContent = `— ${reviewObject.reviewer}`;
+                   reviewRatingElement.textContent = generateRandomRating();
+                   reviewTextElement.textContent = reviewObject.review;
+                   reviewerNameElement.textContent = reviewObject.reviewer;
               }, null, `-=${fadeOutDuration * 0.3}`)
-              .set(elementsToAnimate, { y: 20, scale: 1.05, filter: 'blur(2px)' })
+              .set(elementsToAnimate, { y: 20, scale: 0.98, filter: 'blur(3px)' })
               .to(elementsToAnimate, {
                    duration: fadeInDuration,
                    opacity: 1,
                    y: 0,
                    scale: 1,
                    filter: 'blur(0px)',
-                   ease: "expo.out", // Smoother ease out
-                   stagger: 0.07
+                   ease: "expo.out",
+                   stagger: 0.09
               });
         }
 
@@ -317,7 +501,7 @@ Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemis
                 } else if (isFetching) {
                     return;
                 } else {
-                    setStatus("Rechargement des avis...");
+                    setStatus("Chargement des avis...");
                     isFetching = true;
                     try {
                         const batch = await fetchNewReviewsBatchInternal();
@@ -325,7 +509,7 @@ Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemis
                             localReviewsBatch = batch;
                             currentBatchIndex = 0;
                             hideStatus();
-                        } else { throw new Error("Received empty batch on recovery."); }
+                        } else { throw new Error("Aucun avis reçu."); }
                     } catch (error) {
                         setStatus(`Erreur: ${error.message}`, true);
                         if (intervalId) clearInterval(intervalId);
@@ -339,14 +523,13 @@ Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemis
             }
 
             if (localReviewsBatch.length > 0 && currentBatchIndex < localReviewsBatch.length) {
-                // Ensure any previous status (like loading) is hidden before showing content
-                 if (statusMessageElement.classList.contains('visible') && !statusMessageElement.classList.contains('error')) {
+                if (statusMessageElement.classList.contains('visible') && !statusMessageElement.classList.contains('error')) {
                     hideStatus();
                 }
                 const reviewObj = localReviewsBatch[currentBatchIndex];
                 animateAndDisplay(reviewObj);
 
-                const prefetchIndex = Math.max(0, localReviewsBatch.length - 2); // Prefetch on second to last
+                const prefetchIndex = Math.max(0, localReviewsBatch.length - 3); // Prefetch earlier
                 if (currentBatchIndex === prefetchIndex && nextReviewsBatch === null && !isFetching) {
                      isFetching = true;
                      fetchNewReviewsBatchInternal().then(batch => {
@@ -354,7 +537,7 @@ Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemis
                              nextReviewsBatch = batch;
                          } else { nextReviewsBatch = null; }
                      }).catch(error => {
-                        console.error("Prefetch failed:", error);
+                        console.error("Préchargement échoué:", error);
                         nextReviewsBatch = null;
                      }).finally(() => {
                         isFetching = false;
@@ -364,25 +547,73 @@ Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemis
             }
         }
 
+        function createLuxuryParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('luxury-particles');
+            
+            // Random position
+            const posX = Math.random() * window.innerWidth;
+            const posY = Math.random() * window.innerHeight;
+            
+            // Random size
+            const size = Math.random() * 5 + 3;
+            
+            // Set properties
+            particle.style.left = `${posX}px`;
+            particle.style.top = `${posY}px`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.opacity = Math.random() * 0.5 + 0.1;
+            
+            document.body.appendChild(particle);
+            
+            // Animate the particle
+            gsap.to(particle, {
+                y: posY - 100 - Math.random() * 100,
+                x: posX + (Math.random() * 50 - 25),
+                opacity: 0,
+                duration: 8 + Math.random() * 10,
+                ease: "power1.out",
+                onComplete: () => {
+                    particle.remove();
+                }
+            });
+        }
+
+        function startParticleEffect() {
+            // Create initial particles
+            for (let i = 0; i < 10; i++) {
+                createLuxuryParticle();
+            }
+            
+            // Continue creating particles at interval
+            particlesInterval = setInterval(() => {
+                if (Math.random() > 0.7) { // Only create particles sometimes
+                    createLuxuryParticle();
+                }
+            }, 1000);
+        }
+
         async function initialize() {
-            setStatus("Chargement des premiers avis...");
+            setStatus("Chargement des avis...");
+            startParticleEffect();
+            
             isFetching = true;
             try {
                 const initialBatch = await fetchNewReviewsBatchInternal();
                 if (initialBatch?.length > 0) {
                     localReviewsBatch = initialBatch;
                     currentBatchIndex = 0;
-                    // IMPORTANT: Hide status *before* the first animation starts
                     hideStatus();
-                    // Need a slight delay for hideStatus animation before starting the first review display
+                    
                     setTimeout(() => {
                          showNextReview();
                          if (intervalId) clearInterval(intervalId);
                          intervalId = setInterval(showNextReview, REVIEW_INTERVAL_MS);
-                    }, 450); // Match hideStatus duration + buffer
+                    }, 450);
 
                 } else {
-                    throw new Error("Initial fetch returned no reviews.");
+                    throw new Error("Aucun avis initial reçu.");
                 }
             } catch (error) {
                 setStatus(`Erreur initiale: ${error.message}`, true);
@@ -393,8 +624,8 @@ Le service en boutique était exceptionnel, ils m'ont aidé à choisir ce chemis
             }
         }
 
-        document.addEventListener('DOMContentLoaded', initialize);
-
+        // Start immediately rather than waiting for DOMContentLoaded
+        initialize();
     </script>
 
 </body>
